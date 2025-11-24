@@ -3,95 +3,123 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>S'inscrire - Notre Église</title>
-    <!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <div class="container">
-    <a class="navbar-brand" href="index.html">Antiochian Orthodox Geneva Switzerland</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu" aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarMenu">
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item"><a class="nav-link" href="index.html">Accueil</a></li>
-        <li class="nav-item"><a class="nav-link" href="horaire.html">Horaire Messe</a></li>
-        <li class="nav-item"><a class="nav-link" href="localisation.html">Localisation</a></li>
-        <li class="nav-item"><a class="nav-link" href="evenement.html">Evénements</a></li>
-        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-        <li class="nav-item"><a class="nav-link active" href="apropos.html">À propos</a></li>
-        <li class="nav-item"><a class="nav-link active" href="InscrivezVous.html">Inscrivez-vous</a></li>
-     
-    </ul>
-    </div>
-  </div>
-</nav>
+    <title>S'inscrire - Église Antiochian Orthodox Geneva Switzerland</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 
     <style>
-        /* Styles de Base pour la lisibilité */
+        /* Styles pour aligner le corps et le pied de page (comme dans les autres pages) */
         body {
-            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
             margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-            color: #333;
-            text-align: center; /* Centre le contenu principal */
+            background-color: #f8f9fa; /* Ajout d'un fond très clair pour le contraste */
         }
-        .container {
-            max-width: 800px;
-            margin: 40px auto;
-            padding: 20px;
-            background-color: #fff;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
+        main {
+            flex: 1; 
         }
         h1 {
-            color: #4CAF50; /* Couleur verte pour l'Église */
-            margin-bottom: 10px;
+            /* Utilise la couleur de titre de votre site (semblable au .bg-dark) */
+            color: #2c3e50; 
+            font-weight: 700;
         }
-        p {
-            margin-bottom: 25px;
-            font-size: 1.1em;
-            line-height: 1.5;
+        .intro-text {
+            color: #6c757d; /* Texte secondaire en gris clair */
+            margin-bottom: 30px;
         }
-        /* Style spécifique pour l'intégration du formulaire */
-        .form-wrapper {
-            border: 1px solid #ddd;
-            padding: 10px;
-            border-radius: 4px;
-            overflow: hidden; /* Assure que rien ne dépasse */
-        }
+        /* Style spécifique pour encadrer le formulaire intégré */
         iframe {
             /* Assure que l'iframe remplit bien l'espace alloué */
             width: 100%; 
-            height: 1000px; /* Ajustez cette hauteur si votre formulaire est très long ou très court */
+            height: 800px; /* IMPORTANT : Ajustez cette hauteur si le formulaire est trop court ou trop long */
             border: none;
+            border-radius: 0.25rem; /* Coins légèrement arrondis pour suivre Bootstrap */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.05); /* Ombre légère pour le détacher */
+        }
+        .card-header h2 {
+            margin-bottom: 0;
+            font-size: 1.5rem;
+            color: white;
         }
     </style>
 </head>
 <body>
 
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
-        
-        <h1>🙏 Inscrivez-vous à nos activités</h1>
-        <p>
-            Que ce soit pour une demande de prière, l'inscription à un événement ou pour recevoir notre bulletin d'information hebdomadaire, veuillez remplir le formulaire ci-dessous. Vos informations seront traitées de manière confidentielle.
-        </p>
-
-        <div class="form-wrapper">
-            <iframe 
-                src="https://docs.google.com/forms/d/e/1FAIpQLSf2tCaY8r3J-pCt8moGWJ3GRMlfkQvvewq0GtTk61qPCLEaqw/viewform?embedded=true" 
-                frameborder="0" 
-                marginheight="0" 
-                marginwidth="0">
-                Chargement du formulaire...
-            </iframe>
+        <a class="navbar-brand" href="index.html">Antiochian Orthodox Geneva Switzerland</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu" aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarMenu">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="index.html">Accueil</a></li>
+                <li class="nav-item"><a class="nav-link" href="horaire.html">Horaire Messe</a></li>
+                <li class="nav-item"><a class="nav-link" href="localisation.html">Localisation</a></li>
+                <li class="nav-item"><a class="nav-link" href="evenement.html">Evénements</a></li>
+                <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                <li class="nav-item"><a class="nav-link" href="apropos.html">À propos</a></li>
+                <li class="nav-item"><a class="nav-link active" aria-current="page" href="InscrivezVous.html">Inscrivez-vous</a></li>
+            </ul>
         </div>
-
-        <p style="margin-top: 30px; font-size: 0.9em; color: #666;">
-            Si vous avez des difficultés à visualiser le formulaire, veuillez nous contacter directement.
-        </p>
-
     </div>
+</nav>
+
+<main class="container my-5">
+    
+    <div class="row justify-content-center">
+        <div class="col-12 col-lg-10">
+            
+            <div class="card shadow-lg border-0">
+                
+                <div class="card-header bg-dark text-white text-center py-4">
+                    <h1 class="text-white mb-1"><i class="fas fa-envelope-open-text"></i> Inscription</h1>
+                    <p class="lead intro-text text-white-50 mt-2 mb-0">
+                        Restez connecté avec l'Église ! Recevez les annonces d'événements.
+                    </p>
+                </div>
+                
+                <div class="card-body p-4 p-md-5">
+                    
+                    <p class="text-center lead mb-4">
+                        **Veuillez remplir le formulaire ci-dessous afin de nous autoriser à vous contacter pour les prochains événements.**
+                    </p>
+                    
+                    <hr class="mb-4">
+
+                    <div class="form-content">
+                        <iframe 
+                            src="https://docs.google.com/forms/d/e/1FAIpQLSf2tCaY8r3J-pCt8moGWJ3GRMlfkQvvewq0GtTk61qPCLEaqw/viewform?embedded=true" 
+                            frameborder="0" 
+                            marginheight="0" 
+                            marginwidth="0">
+                            Chargement du formulaire...
+                        </iframe>
+                    </div>
+
+                    <p class="text-center mt-4 text-muted small">
+                        Vos informations sont stockées en toute sécurité via Google Sheets (pas de base de données tierce). Vous pouvez vous désinscrire à tout moment.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</main>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<footer class="bg-dark text-white text-center py-3">
+    &copy; 2025 Église Antiochian Orthodox Geneva Switzerland | Tous droits réservés
+
+    <p>
+        <a href="mentions-legales.html" class="text-white">Mentions légales</a> | 
+        <a href="politique-confidentialite.html" class="text-white">Politique de confidentialité</a>
+    </p>
+</footer>
 
 </body>
 </html>
