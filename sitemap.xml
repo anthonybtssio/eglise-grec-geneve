@@ -1,25 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
-    <url>
-        <loc>https://www.monsite.com/</loc>
-        <lastmod>2025-12-09</lastmod> 
-        <changefreq>daily</changefreq> 
-        <priority>1.0</priority>
-    </url>
+    <sitemap>
+        <loc>https://aoas.vitrineonline.fr/page-sitemap.xml</loc>
+        <lastmod>2025-12-08T12:28:00+00:00</lastmod> 
+    </sitemap>
 
-    <url>
-        <loc>https://www.monsite.com/produit-a-vendre</loc>
-        <lastmod>2025-12-07</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
+    <sitemap>
+        <loc>https://aoas.vitrineonline.fr/product-sitemap.xml</loc>
+        <lastmod>2025-12-08T20:56:00+00:00</lastmod>
+    </sitemap>
 
-    <url>
-        <loc>https://www.monsite.com/contact</loc>
-        <lastmod>2024-01-15</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.5</priority>
-    </url>
+    <sitemap>
+        <loc>https://aoas.vitrineonline.fr/product_cat-sitemap.xml</loc>
+        <lastmod>2025-12-08T20:56:00+00:00</lastmod>
+    </sitemap>
 
-</urlset>
+</sitemapindex>
