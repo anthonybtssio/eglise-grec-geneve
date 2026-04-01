@@ -1,100 +1,96 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Événements - Église Antiochian Orthodox Geneva Switzerland</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <style>
-    body {
-      background-color: #f8f9fa;
-    }
-    .event-card {
-      margin-bottom: 20px;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Événements - Église Antiochian Orthodox Geneva Switzerland</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- Barre de navigation -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="index.html">Antiochian Orthodox Geneva Switzerland</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link" href="index.html">Accueil</a></li>
-          <li class="nav-item"><a class="nav-link" href="horaire.html">Horaire Messe</a></li>
-          <li class="nav-item"><a class="nav-link" href="localisation.html">Localisation</a></li>
-          <li class="nav-item"><a class="nav-link active" href="evenement.html">Événements</a></li>
-          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-          <li class="nav-item"><a class="nav-link" href="apropos.html">À propos</a></li>
-          <li class="nav-item"><a class="nav-link active" href="InscrivezVous.html">Inscrivez-vous</a></li>
-
-        </ul>
-      </div>
-    </div>
-  </nav>
-
-  <!-- Contenu principal -->
-  <div class="container py-5">
-    <h1 class="mb-4 text-center">📅 Événements à venir</h1>
-    <div id="events-container" class="row"></div>
-  </div>
-
-  <div class="container py-5">
-  <!-- Script pour charger les événements -->
-  <script>
-  fetch("events.json")
-    .then(response => response.json())
-    .then(events => {
-      let container = document.getElementById("events-container");
-
-      // Trier par date
-      events.sort((a, b) => new Date(a.date) - new Date(b.date));
-
-      // Générer les cartes Bootstrap
-      events.forEach(event => {
-        let card = document.createElement("div");
-        card.classList.add("col-md-12");
-
-        card.innerHTML = `
-          <div class="card event-card shadow-sm">
-            ${event.image ? `<img src="${event.image}" class="mx-auto d-block" style="width:300px;" alt="${event.title}">` : ""}
-            <div class="card-body text-center">
-              <h5 class="card-title">${event.title}</h5>
-              <h6 class="card-subtitle mb-2 text-muted">${new Date(event.date).toLocaleDateString("fr-FR")}</h6>
-              <p class="card-text">${event.description}</p>
-              <!-- Bouton inscription Google Form -->
-              <a href="https://docs.google.com/forms/d/e/1FAIpQLSf8gE1bgBc8-_N-3RLD3TTRNPzPy0_krkq_gTmKpudUFwrsCQ/viewform" target="_blank" class="btn btn-primary">S'inscrire</a>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Antiochian Orthodox <span class="d-none d-sm-inline">Geneva</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarMenu">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Accueil</a></li>
+                    <li class="nav-item"><a class="nav-link" href="horaire.html">Horaire</a></li>
+                    <li class="nav-item"><a class="nav-link" href="localisation.html">Localisation</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="evenement.html">Événements</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="apropos.html">À propos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="InscrivezVous.html">Inscription</a></li>
+                </ul>
             </div>
-          </div>
-        `;
-        container.appendChild(card);
-      });
-    })
-    .catch(error => console.error("Erreur lors du chargement des événements :", error));
-  </script>
-  </div>
+        </div>
+    </nav>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Contenu principal -->
+    <main class="container py-5">
+        <h1 class="text-center section-title">📅 Événements à venir</h1>
+        <div id="events-container" class="row justify-content-center">
+            <!-- Les événements seront chargés ici -->
+        </div>
+    </main>
 
-  <footer class="bg-dark text-white text-center py-3">
-    &copy; 2025 Église Antiochian Orthodox Geneva Switzerland | Tous droits réservés
-    <p>
-      <a href="mentions-legales.html" class="text-white">Mentions légales</a> | 
-      <a href="politique-confidentialite.html" class="text-white">Politique de confidentialité</a>
-    </p>
-    <p>
-    <a href="https://m.facebook.com/share/p/16q4RCaz4V/?mibextid=wwXIfr&wtsid=rdr_0NXitAsiyx5FxvxpR" target="_blank" class="text-white me-3">
-      <i class="fab fa-facebook fa-lg"></i>
-    </a>
-    <a href="https://www.instagram.com/antioch_geneve?igsh=ZjM0MW9qY2VpeDNh" target="_blank" class="text-white">
-      <i class="fab fa-instagram fa-lg"></i>
-    </a>
-  </p>
-  </footer>
+    <script>
+    fetch("events.json")
+      .then(response => response.json())
+      .then(events => {
+        let container = document.getElementById("events-container");
+        events.sort((a, b) => new Date(a.date) - new Date(b.date));
 
+        events.forEach(event => {
+          let col = document.createElement("div");
+          col.classList.add("col-12", "col-lg-8");
+
+          col.innerHTML = `
+            <div class="card event-card">
+              ${event.image ? `<img src="${event.image}" class="card-img-top" alt="${event.title}">` : ""}
+              <div class="card-body text-center p-4">
+                <h3 class="card-title">${event.title}</h3>
+                <h6 class="text-muted mb-3"><i class="far fa-calendar-alt me-2"></i>${new Date(event.date).toLocaleDateString("fr-FR", {day: 'numeric', month: 'long', year: 'numeric'})}</h6>
+                <p class="card-text">${event.description}</p>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSf8gE1bgBc8-_N-3RLD3TTRNPzPy0_krkq_gTmKpudUFwrsCQ/viewform" target="_blank" class="btn btn-primary mt-3">S'inscrire à l'événement</a>
+              </div>
+            </div>
+          `;
+          container.appendChild(col);
+        });
+      })
+      .catch(error => console.error("Erreur lors du chargement des événements :", error));
+    </script>
+
+    <footer class="text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 mb-4">
+                    <h3 class="text-white mb-3">Antiochian Orthodox Geneva Switzerland</h3>
+                    <div class="social-icons">
+                        <a href="https://m.facebook.com/share/p/16q4RCaz4V/?mibextid=wwXIfr&wtsid=rdr_0NXitAsiyx5FxvxpR" target="_blank">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="https://www.instagram.com/antioch_geneve?igsh=ZjM0MW9qY2VpeDNh" target="_blank">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-12 mb-4">
+                    <p class="mb-1">
+                        <a href="mentions-legales.html">Mentions légales</a> | 
+                        <a href="politique-confidentialite.html">Politique de confidentialité</a>
+                    </p>
+                    <p class="small text-white-50">&copy; 2025 Tous droits réservés</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

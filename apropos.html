@@ -1,110 +1,104 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>À propos - Église Antiochian Orthodox Geneva Switzerland</title>
-
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-
-  <style>
-    html, body {
-      height: 100%;
-      margin: 0;
-      display: flex;
-      flex-direction: column;
-    }
-    main {
-      flex: 1; /* prend tout l'espace restant entre navbar et footer */
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>À propos - Église Antiochian Orthodox Geneva Switzerland</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Antiochian Orthodox <span class="d-none d-sm-inline">Geneva</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarMenu">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Accueil</a></li>
+                    <li class="nav-item"><a class="nav-link" href="horaire.html">Horaire</a></li>
+                    <li class="nav-item"><a class="nav-link" href="localisation.html">Localisation</a></li>
+                    <li class="nav-item"><a class="nav-link" href="evenement.html">Événements</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="apropos.html">À propos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="InscrivezVous.html">Inscription</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
-<!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <div class="container">
-    <a class="navbar-brand" href="index.html">Antiochian Orthodox Geneva Switzerland</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu" aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarMenu">
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item"><a class="nav-link" href="index.html">Accueil</a></li>
-        <li class="nav-item"><a class="nav-link" href="horaire.html">Horaire Messe</a></li>
-        <li class="nav-item"><a class="nav-link" href="localisation.html">Localisation</a></li>
-        <li class="nav-item"><a class="nav-link" href="evenement.html">Evénements</a></li>
-        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-        <li class="nav-item"><a class="nav-link active" href="apropos.html">À propos</a></li>
-        <li class="nav-item"><a class="nav-link active" href="InscrivezVous.html">Inscrivez-vous</a></li>
+    <main class="container py-5">
+        <h1 class="text-center section-title">Ressources Orthodoxes</h1>
+        <p class="text-center mb-5 lead">Découvrez d'autres sites et institutions orthodoxes à travers le monde :</p>
 
-      </ul>
-    </div>
-  </div>
-</nav>
+        <div class="row g-4 justify-content-center">
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="info-card text-center">
+                    <h4>Patriarcat d'Antioche</h4>
+                    <a href="https://www.antiochian.org/home" target="_blank" class="btn btn-outline-primary w-100">Visiter le site</a>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="info-card text-center">
+                    <h4>Université de Balamand</h4>
+                    <a href="https://www.balamand.edu.lb/home/Pages/default.aspx" target="_blank" class="btn btn-outline-primary w-100">Visiter le site</a>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="info-card text-center">
+                    <h4>Mouvement de la Jeunesse Orthodoxe</h4>
+                    <a href="http://www.ortmtlb.org.lb/" target="_blank" class="btn btn-outline-primary w-100">Visiter le site</a>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="info-card text-center">
+                    <h4>Syrian Orthodox Church</h4>
+                    <a href="https://syrianorthodoxchurch.org/" target="_blank" class="btn btn-outline-primary w-100">Visiter le site</a>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="info-card text-center">
+                    <h4>Orthodox Supply</h4>
+                    <a href="https://orthodoxsupply.com/" target="_blank" class="btn btn-outline-primary w-100">Visiter le site</a>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="info-card text-center">
+                    <h4>Orthodoxie en Chine</h4>
+                    <a href="http://www.chinese.orthodoxy.ru/ENGLISH/chinaE.htm" target="_blank" class="btn btn-outline-primary w-100">Visiter le site</a>
+                </div>
+            </div>
+        </div>
+    </main>
 
-<!-- Contenu principal -->
-<main class="container my-5">
-  <h1 class="text-center mb-4">Liens vers différents sites orthodoxes dans le monde
-</h1>
-  
-  
+    <footer class="text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 mb-4">
+                    <h3 class="text-white mb-3">Antiochian Orthodox Geneva Switzerland</h3>
+                    <div class="social-icons">
+                        <a href="https://m.facebook.com/share/p/16q4RCaz4V/?mibextid=wwXIfr&wtsid=rdr_0NXitAsiyx5FxvxpR" target="_blank">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="https://www.instagram.com/antioch_geneve?igsh=ZjM0MW9qY2VpeDNh" target="_blank">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-12 mb-4">
+                    <p class="mb-1">
+                        <a href="mentions-legales.html">Mentions légales</a> | 
+                        <a href="politique-confidentialite.html">Politique de confidentialité</a>
+                    </p>
+                    <p class="small text-white-50">&copy; 2025 Tous droits réservés</p>
+                </div>
+            </div>
+        </div>
+    </footer>
 
-  <p class="text-justify">
-  </p>
-
-  <p class="text-center">
-    <a href="https://www.antiochian.org/home" class="btn btn-dark">https://www.antiochian.org/home</a>
-  </p>
-
-<p class="text-center">
-    <a href="https://www.balamand.edu.lb/home/Pages/default.aspx" class="btn btn-dark">https://www.balamand.edu.lb/home/Pages/default.aspx</a>
-  </p>
-
-  <p class="text-center">
-    <a href="http://www.ortmtlb.org.lb/" class="btn btn-dark">http://www.ortmtlb.org.lb/</a>
-  </p>
-
-
-  <p class="text-center">
-    <a href="https://syrianorthodoxchurch.org/" class="btn btn-dark">https://syrianorthodoxchurch.org/</a>
-  </p>
-
-  <p class="text-center">
-    <a href="https://orthodoxsupply.com/" class="btn btn-dark">https://orthodoxsupply.com/</a>
-
-  </p>
-
-  <p class="text-center">
-    <a href="http://www.chinese.orthodoxy.ru/ENGLISH/chinaE.htm" class="btn btn-dark">http://www.chinese.orthodoxy.ru/ENGLISH/chinaE.htm</a>
-
-  </p>
-
-</main>
-
-
-
-<!-- Bootstrap JS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-<footer class="bg-dark text-white text-center py-3">
-  &copy; 2025 Église Antiochian Orthodox Geneva Switzerland | Tous droits réservés
-
-  <p>
-    <a href="mentions-legales.html" class="text-white">Mentions légales</a> | 
-      <a href="politique-confidentialite.html" class="text-white">Politique de confidentialité</a>
-  </p>
-  <p>
-    <a href="https://m.facebook.com/share/p/16q4RCaz4V/?mibextid=wwXIfr&wtsid=rdr_0NXitAsiyx5FxvxpR" target="_blank" class="text-white me-3">
-      <i class="fab fa-facebook fa-lg"></i>
-    </a>
-    <a href="https://www.instagram.com/antioch_geneve?igsh=ZjM0MW9qY2VpeDNh" target="_blank" class="text-white">
-      <i class="fab fa-instagram fa-lg"></i>
-    </a>
-  </p>
-</footer>
-
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

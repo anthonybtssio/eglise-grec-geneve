@@ -1,19 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
-    <sitemap>
-        <loc>https://aoas.vitrineonline.fr/page-sitemap.xml</loc>
-        <lastmod>2025-12-08T12:28:00+00:00</lastmod> 
-    </sitemap>
-
-    <sitemap>
-        <loc>https://aoas.vitrineonline.fr/product-sitemap.xml</loc>
-        <lastmod>2025-12-08T20:56:00+00:00</lastmod>
-    </sitemap>
-
-    <sitemap>
-        <loc>https://aoas.vitrineonline.fr/product_cat-sitemap.xml</loc>
-        <lastmod>2025-12-08T20:56:00+00:00</lastmod>
-    </sitemap>
-
-</sitemapindex>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+   <url>
+      <loc>https://votre-site.ch/index.html</loc>
+      <lastmod>2025-10-01</lastmod>
+      <priority>1.00</priority>
+   </url>
+   <url>
+      <loc>https://votre-site.ch/horaire.html</loc>
+      <lastmod>2025-10-01</lastmod>
+      <priority>0.80</priority>
+   </url>
+   <url>
+      <loc>https://votre-site.ch/localisation.html</loc>
+      <lastmod>2025-10-01</lastmod>
+      <priority>0.80</priority>
+   </url>
+   <url>
+      <loc>https://votre-site.ch/evenement.html</loc>
+      <lastmod>2025-10-01</lastmod>
+      <priority>0.80</priority>
+   </url>
+   <url>
+      <loc>https://votre-site.ch/contact.html</loc>
+      <lastmod>2025-10-01</lastmod>
+      <priority>0.70</priority>
+   </url>
+   <url>
+      <loc>https://votre-site.ch/apropos.html</loc>
+      <lastmod>2025-10-01</lastmod>
+      <priority>0.60</priority>
+   </url>
+   <url>
+      <loc>https://votre-site.ch/InscrivezVous.html</loc>
+      <lastmod>2025-10-01</lastmod>
+      <priority>0.60</priority>
+   </url>
+</urlset>
