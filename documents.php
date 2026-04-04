@@ -22,16 +22,16 @@ $docs = array_filter($p, function($v) { return $v['t'] === 'doc'; });
 
 <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
     <div class="container">
-        <a class="navbar-brand" href="index.php">Antiochian Orthodox</a>
+        <a class="navbar-brand" href="index.html">Antiochian Orthodox</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarMenu">
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link" href="index.php">Accueil</a></li>
+                <li class="nav-item"><a class="nav-link" href="index.html">Accueil</a></li>
                 <li class="nav-item"><a class="nav-link" href="horaire.html">Horaire</a></li>
                 <li class="nav-item"><a class="nav-link" href="localisation.html">Localisation</a></li>
-                <li class="nav-item"><a class="nav-link" href="evenement.php">Événements</a></li>
+                <li class="nav-item"><a class="nav-link" href="evenement.html">Événements</a></li>
                 <li class="nav-item"><a class="nav-link active" href="documents.php">Documents</a></li>
                 <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
             </ul>

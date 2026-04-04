@@ -107,7 +107,7 @@ $events = file_exists($json_events) ? json_decode(file_get_contents($json_events
         <h2><i class="fas fa-user-shield text-primary me-2"></i> Espace Admin</h2>
         <?php if(isset($_SESSION['a'])): ?>
             <div>
-                <a href="index.php" class="btn btn-outline-secondary me-2">Voir le site</a>
+                <a href="index.html" class="btn btn-outline-secondary me-2">Voir le site</a>
                 <a href="?logout=1" class="btn btn-danger">Quitter</a>
             </div>
         <?php endif; ?>

@@ -1,33 +1,3 @@
-<?php
-$json_events = "events.json";
-$events = file_exists($json_events) ? json_decode(file_get_contents($json_events), true) : [];
-$next_event = null;
-$today = date('Y-m-d');
-
-if (!empty($events)) {
-    $future_events = array_filter($events, function($e) use ($today) {
-        return $e['date'] >= $today;
-    });
-    
-    usort($future_events, function($a, $b) {
-        return strtotime($a['date']) - strtotime($b['date']);
-    });
-    
-    if (!empty($future_events)) {
-        $next_event = $future_events[0];
-    }
-}
-
-function format_fr_date($date) {
-    $months = [
-        'January' => 'janvier', 'February' => 'février', 'March' => 'mars', 'April' => 'avril',
-        'May' => 'mai', 'June' => 'juin', 'July' => 'juillet', 'August' => 'août',
-        'September' => 'septembre', 'October' => 'octobre', 'November' => 'novembre', 'December' => 'décembre'
-    ];
-    $date_str = date("d F Y", strtotime($date));
-    return strtr($date_str, $months);
-}
-?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -55,16 +25,16 @@ function format_fr_date($date) {
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
     <div class="container">
-        <a class="navbar-brand" href="index.php">Antiochian Orthodox <span class="d-none d-sm-inline">Geneva</span></a>
+        <a class="navbar-brand" href="index.html">Antiochian Orthodox <span class="d-none d-sm-inline">Geneva</span></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu" aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarMenu">
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link active" href="index.php">Accueil</a></li>
+                <li class="nav-item"><a class="nav-link active" href="index.html">Accueil</a></li>
                 <li class="nav-item"><a class="nav-link" href="horaire.html">Horaire</a></li>
                 <li class="nav-item"><a class="nav-link" href="localisation.html">Localisation</a></li>
-                <li class="nav-item"><a class="nav-link" href="evenement.php">Événements</a></li>
+                <li class="nav-item"><a class="nav-link" href="evenement.html">Événements</a></li>
                 <li class="nav-item"><a class="nav-link" href="documents.php">Documents</a></li>
                 <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
                 <li class="nav-item"><a class="nav-link" href="apropos.html">À propos</a></li>
@@ -127,19 +97,10 @@ function format_fr_date($date) {
             <div class="col-12 col-md-4">
                 <div class="info-card">
                     <h4><i class="fas fa-calendar-alt mb-3 d-block"></i> Prochain événement</h4>
-                    <?php if ($next_event): ?>
-                        <p class="mb-0">
-                            <strong><?= $next_event['title'] ?></strong><br>
-                            <?= format_fr_date($next_event['date']) ?>
-                        </p>
-                        <a href="evenement.php" class="btn btn-sm btn-outline-primary mt-2">Détails</a>
-                    <?php else: ?>
-                        <p class="mb-0">Aucun événement prévu pour le moment.</p>
-                    <?php endif; ?>
+                    <p class="mb-0">Déjeuner de manakish - 14 septembre 2025<br>10h30 à Bellevue</p>
                 </div>
             </div>
         </div>
-    </div>
     <!-- Bloc SEO / Présentation -->
     <div class="bg-light py-5">
         <div class="container">
@@ -149,6 +110,11 @@ function format_fr_date($date) {
                     <p class="lead">
                         Bienvenue à la paroisse de l'<strong>Église Antiochian Orthodox Geneva Switzerland</strong>. 
                         Située à Bellevue, notre communauté représente l'<strong>Église orthodoxe grecque</strong> au sein du canton de Genève et de la Suisse.
+                    </p>
+                    <p>
+                        Que vous cherchiez la <strong>Greek Orthodox Church in Geneva</strong> ou l'<strong>Église orthodoxe Antiochian</strong>, 
+                        nous vous accueillons pour les offices et événements communautaires. Notre paroisse est un lieu de prière, 
+                        de rassemblement et de partage pour tous les fidèles orthodoxes de la région de Bellevue et de ses environs.
                     </p>
                 </div>
             </div>
@@ -184,6 +150,7 @@ function format_fr_date($date) {
 
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="script.js"></script>
 
 </body>
 </html>
