@@ -31,8 +31,7 @@ $docs = array_filter($p, function($v) { return $v['t'] === 'doc'; });
                 <li class="nav-item"><a class="nav-link" href="index.html">Accueil</a></li>
                 <li class="nav-item"><a class="nav-link" href="horaire.html">Horaire</a></li>
                 <li class="nav-item"><a class="nav-link" href="localisation.html">Localisation</a></li>
-                <li class="nav-item"><a class="nav-link" href="evenement.html">Événements</a></li>
-                <li class="nav-item"><a class="nav-link" href="galerie.php">Galerie</a></li>
+                <li class="nav-item"><a class="nav-link" href="evenement.php">Événements</a></li>
                 <li class="nav-item"><a class="nav-link active" href="documents.php">Documents</a></li>
                 <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
             </ul>

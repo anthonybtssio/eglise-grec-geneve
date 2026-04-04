@@ -1,9 +1,15 @@
+<?php
+$json = "events.json";
+$events = file_exists($json) ? json_decode(file_get_contents($json), 1) : [];
+// Trier par date (plus récent au plus vieux ou selon la date de l'événement)
+usort($events, function($a, $b) { return strtotime($a['date']) - strtotime($b['date']); });
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>S'inscrire - Église Antiochian Orthodox Geneva Switzerland</title>
+    <title>Événements - Église Antiochian Orthodox Geneva Switzerland</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="style.css">
@@ -21,50 +27,53 @@
                     <li class="nav-item"><a class="nav-link" href="index.html">Accueil</a></li>
                     <li class="nav-item"><a class="nav-link" href="horaire.html">Horaire</a></li>
                     <li class="nav-item"><a class="nav-link" href="localisation.html">Localisation</a></li>
-                    <li class="nav-item"><a class="nav-link" href="evenement.php">Événements</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="evenement.php">Événements</a></li>
                     <li class="nav-item"><a class="nav-link" href="documents.php">Documents</a></li>
                     <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
                     <li class="nav-item"><a class="nav-link" href="apropos.html">À propos</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="InscrivezVous.html">Inscription</a></li>
+                    <li class="nav-item"><a class="nav-link" href="InscrivezVous.html">Inscription</a></li>
                 </ul>
             </div>
         </div>
     </nav>
 
+    <!-- Contenu principal -->
     <main class="container py-5">
-        <h1 class="text-center section-title">Inscription Communautaire</h1>
+        <h1 class="text-center section-title mb-5">📅 Événements à venir</h1>
         
-        <div class="row justify-content-center">
-            <div class="col-12 col-lg-10">
-                <div class="card shadow-lg border-0 rounded-4 overflow-hidden">
-                    <div class="card-header bg-primary text-white text-center py-4 border-0">
-                        <h3 class="mb-1 text-white"><i class="fas fa-envelope-open-text me-2"></i>Restez Connecté</h3>
-                        <p class="mb-0 text-white-50">Recevez les annonces d'événements et les bulletins de la paroisse.</p>
-                    </div>
-                    
-                    <div class="card-body p-0">
-                        <div class="p-4 p-md-5 text-center">
-                            <p class="lead mb-4">Veuillez remplir le formulaire ci-dessous pour nous autoriser à vous contacter.</p>
-                            <div class="ratio ratio-16x9" style="min-height: 800px;">
-                                <iframe 
-                                    src="https://docs.google.com/forms/d/e/1FAIpQLSf2tCaY8r3J-pCt8moGWJ3GRMlfkQvvewq0GtTk61qPCLEaqw/viewform?embedded=true" 
-                                    frameborder="0" 
-                                    marginheight="0" 
-                                    marginwidth="0">
-                                    Chargement du formulaire...
-                                </iframe>
-                            </div>
+        <div class="row justify-content-center g-4">
+            <?php if(empty($events)): ?>
+                <div class="text-center py-5">
+                    <p class="text-muted lead">Aucun événement prévu pour le moment. Revenez bientôt !</p>
+                </div>
+            <?php endif; ?>
+
+            <?php foreach($events as $e): ?>
+                <div class="col-12 col-lg-8">
+                    <div class="card event-card shadow-sm border-0 rounded-4 overflow-hidden">
+                        <?php if(!empty($e['image'])): ?>
+                            <img src="<?= $e['image'] ?>" class="card-img-top" style="max-height: 400px; object-fit: cover;" alt="<?= $e['title'] ?>">
+                        <?php endif; ?>
+                        <div class="card-body text-center p-4 p-md-5">
+                            <h2 class="card-title fw-bold mb-3"><?= $e['title'] ?></h2>
+                            <h6 class="text-primary mb-4">
+                                <i class="far fa-calendar-alt me-2"></i>
+                                <?php 
+                                    setlocale(LC_TIME, 'fr_FR.UTF-8', 'fra');
+                                    echo date("d F Y", strtotime($e['date'])); 
+                                ?>
+                            </h6>
+                            <p class="card-text lead mb-4"><?= nl2br($e['description']) ?></p>
+                            
+                            <?php if(!empty($e['link'])): ?>
+                                <a href="<?= $e['link'] ?>" target="_blank" class="btn btn-primary btn-lg px-5 rounded-pill">S'inscrire à l'événement</a>
+                            <?php else: ?>
+                                <a href="InscrivezVous.html" class="btn btn-outline-primary btn-lg px-5 rounded-pill">Plus d'infos</a>
+                            <?php endif; ?>
                         </div>
                     </div>
-                    
-                    <div class="card-footer bg-light p-4 text-center border-0">
-                        <p class="text-muted small mb-0">
-                            Vos informations sont stockées en toute sécurité. Vous pouvez vous désinscrire à tout moment. 
-                            Consultez notre <a href="politique-confidentialite.html" class="text-decoration-none text-primary">Politique de Confidentialité</a>.
-                        </p>
-                    </div>
                 </div>
-            </div>
+            <?php endforeach; ?>
         </div>
     </main>
 
