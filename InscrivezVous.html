@@ -43,17 +43,24 @@
                     </div>
                     
                     <div class="card-body p-0">
-                        <div class="p-4 p-md-5 text-center">
-                            <p class="lead mb-4">Veuillez remplir le formulaire ci-dessous pour nous autoriser à vous contacter.</p>
-                            <div class="ratio ratio-16x9" style="min-height: 800px;">
-                                <iframe 
-                                    src="https://docs.google.com/forms/d/e/1FAIpQLSf2tCaY8r3J-pCt8moGWJ3GRMlfkQvvewq0GtTk61qPCLEaqw/viewform?embedded=true" 
-                                    frameborder="0" 
-                                    marginheight="0" 
-                                    marginwidth="0">
-                                    Chargement du formulaire...
-                                </iframe>
-                            </div>
+                        <div class="p-4 p-md-5">
+                            <p class="lead mb-4 text-center">Veuillez remplir le formulaire ci-dessous pour créer votre compte.</p>
+                            
+                            <form action="inscription.php" method="POST" class="mx-auto" style="max-width: 400px;">
+                                <div class="mb-3">
+                                    <label for="username" class="form-label">Nom d'utilisateur</label>
+                                    <input type="text" class="form-control form-control-lg" id="username" name="username" placeholder="Choisissez un nom" required>
+                                </div>
+                                <div class="mb-4">
+                                    <label for="password" class="form-label">Mot de passe</label>
+                                    <input type="password" class="form-control form-control-lg" id="password" name="password" placeholder="Votre mot de passe" required>
+                                </div>
+                                <div class="d-grid">
+                                    <button type="submit" class="btn btn-primary btn-lg rounded-pill py-3">
+                                        <i class="fas fa-user-plus me-2"></i>S'inscrire
+                                    </button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                     
