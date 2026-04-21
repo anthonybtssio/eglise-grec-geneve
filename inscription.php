@@ -1,9 +1,9 @@
 <?php
 // --- CONFIGURATION O2SWITCH ---
 $host = "localhost";
-$dbname = "aoas";          // Remplace par 'tonpseudo_aoas' si besoin
-$user = "TON_UTILISATEUR"; // REMPLACE PAR TON UTILISATEUR MYSQL
-$pass = "TON_MOT_DE_PASSE"; // REMPLACE PAR TON MOT DE PASSE MYSQL
+$dbname = "sc1zugo6376_aoas";   // <--- Ton vrai nom de base de données
+$user = "sc1zugo6376_anthony";  // <--- Ton vrai utilisateur MySQL
+$pass = "Antho2006";     // <--- Ton mot de passe est maintenant configuré !
 
 try {
     // Connexion sécurisée avec UTF-8
