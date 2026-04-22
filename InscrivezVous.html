@@ -7,7 +7,11 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="style.css">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Antioch GVA">
     <link rel="apple-touch-icon" href="logo.png">
+    <link rel="apple-touch-startup-image" href="logo.png">
     <link rel="manifest" href="manifest.json">
 </head>
 <body>
@@ -16,7 +20,7 @@
         <div class="container">
             <a class="navbar-brand" href="index.html">Antiochian Orthodox <span class="d-none d-sm-inline">Geneva</span></a>
             <div class="nav-controls">
-                <button id="btnInstall" class="btn-install-app">Appli</button>
+                <button id="btnInstall" class="btn-install-app" data-i18n="install-btn">Appli</button>
                 <div class="lang-switcher">
                     <button class="lang-btn active-lang" id="btn-fr" onclick="setLang('fr')">FR</button>
                     <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
@@ -42,56 +46,56 @@
     </nav>
 
     <main class="container py-5">
-        <h1 class="text-center section-title">Inscrivez-vous à la paroisse</h1>
+        <h1 class="text-center section-title" data-i18n="reg-title">Inscrivez-vous à la paroisse</h1>
 
         <div class="row justify-content-center">
             <div class="col-12 col-lg-8">
                 <div class="registration-container p-4 p-md-5">
-                    <h3 class="mb-4 text-center">Formulaire d'adhésion</h3>
-                    <p class="text-center text-muted mb-5 small">Rejoignez notre communauté et restez informé des activités de la paroisse.</p>
+                    <h3 class="mb-4 text-center" data-i18n="reg-form-title">Formulaire d'adhésion</h3>
+                    <p class="text-center text-muted mb-5 small" data-i18n="reg-form-subtitle">Rejoignez notre communauté et restez informé des activités de la paroisse.</p>
                     
                     <form action="inscription.php" method="POST">
                         <div class="row g-4">
                             <!-- Nom complet -->
                             <div class="col-md-6">
-                                <label for="nom" class="form-label">Nom de famille</label>
+                                <label for="nom" class="form-label" data-i18n="reg-lastname">Nom de famille</label>
                                 <input type="text" class="form-control" id="nom" name="nom" placeholder="Votre nom" required>
                             </div>
                             <div class="col-md-6">
-                                <label for="prenom" class="form-label">Prénom</label>
+                                <label for="prenom" class="form-label" data-i18n="reg-firstname">Prénom</label>
                                 <input type="text" class="form-control" id="prenom" name="prenom" placeholder="Votre prénom" required>
                             </div>
 
                             <!-- Email et téléphone -->
                             <div class="col-md-6">
-                                <label for="email" class="form-label">Email</label>
+                                <label for="email" class="form-label" data-i18n="reg-email">Email</label>
                                 <input type="email" class="form-control" id="email" name="email" placeholder="votre@email.com" required>
                             </div>
                             <div class="col-md-6">
-                                <label for="telephone" class="form-label">Téléphone</label>
+                                <label for="telephone" class="form-label" data-i18n="reg-phone">Téléphone</label>
                                 <input type="tel" class="form-control" id="telephone" name="telephone" placeholder="+41 00 000 00 00" required>
                             </div>
 
                             <!-- Adresse -->
                             <div class="col-12">
-                                <label for="adresse" class="form-label">Adresse complète</label>
+                                <label for="adresse" class="form-label" data-i18n="reg-address">Adresse complète</label>
                                 <input type="text" class="form-control" id="adresse" name="adresse" placeholder="Rue, numéro, code postal et ville" required>
                             </div>
 
                             <!-- Nombre de personnes -->
                             <div class="col-md-6">
-                                <label for="nb_famille" class="form-label">Nombre de personnes dans la famille</label>
+                                <label for="nb_famille" class="form-label" data-i18n="reg-family-count">Nombre de personnes dans la famille</label>
                                 <input type="number" class="form-control" id="nb_famille" name="nb_famille" min="1" value="1" required>
                             </div>
                             <div class="col-md-6">
-                                <label for="date_naissance" class="form-label">Date de naissance (référent)</label>
+                                <label for="date_naissance" class="form-label" data-i18n="reg-birthdate">Date de naissance (référent)</label>
                                 <input type="date" class="form-control" id="date_naissance" name="date_naissance" required>
                             </div>
 
                             <!-- Bouton d'inscription -->
                             <div class="col-12 text-center mt-5">
-                                <button type="submit" class="btn btn-gold-action btn-lg px-5">Confirmer l'inscription</button>
-                                <p class="mt-3 small text-muted">En vous inscrivant, vous acceptez notre <a href="politique-confidentialite.html" class="text-gold">politique de confidentialité</a>.</p>
+                                <button type="submit" class="btn btn-gold-action btn-lg px-5" data-i18n="reg-confirm">Confirmer l'inscription</button>
+                                <p class="mt-3 small text-muted" data-i18n="reg-privacy">En vous inscrivant, vous acceptez notre <a href="politique-confidentialite.html" class="text-gold">politique de confidentialité</a>.</p>
                             </div>
                         </div>
                     </form>

@@ -10,8 +10,9 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="Antioch GVA">
-    <link rel="manifest" href="manifest.json">
     <link rel="apple-touch-icon" href="logo.png">
+    <link rel="apple-touch-startup-image" href="logo.png">
+    <link rel="manifest" href="manifest.json">
 </head>
 <body>
     <!-- Navbar -->
@@ -20,7 +21,7 @@
             <a class="navbar-brand" href="index.html">Antiochian Orthodox <span class="d-none d-sm-inline">Geneva</span></a>
             
             <div class="nav-controls">
-                <button id="btnInstall" class="btn-install-app">Appli</button>
+                <button id="btnInstall" class="btn-install-app" data-i18n="install-btn">Appli</button>
                 <div class="lang-switcher">
                     <button class="lang-btn active-lang" id="btn-fr" onclick="setLang('fr')">FR</button>
                     <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
@@ -48,18 +49,18 @@
     </nav>
 
     <main class="container py-5">
-        <h1 class="text-center section-title">Documents de la Paroisse</h1>
-        <p class="text-center text-muted mb-5">Retrouvez ici tous les documents officiels, statuts et formulaires de notre communauté.</p>
+        <h1 class="text-center section-title" data-i18n="docs-title">Documents de la Paroisse</h1>
+        <p class="text-center text-muted mb-5" data-i18n="docs-subtitle">Retrouvez ici tous les documents officiels, statuts et formulaires de notre communauté.</p>
 
         <div class="row g-4">
             <!-- Grille de documents pour une meilleure réactivité que le tableau -->
             <div class="col-12 col-md-6 col-lg-4">
                 <div class="info-card d-flex flex-column align-items-center text-center p-4">
                     <i class="fas fa-file-pdf fa-3x mb-3 text-danger"></i>
-                    <h4 class="h5 mb-2">Statuts de la Paroisse</h4>
-                    <p class="small text-muted mb-4">Document officiel décrivant l'organisation et le fonctionnement de l'association.</p>
+                    <h4 class="h5 mb-2" data-i18n="docs-statuts-title">Statuts de la Paroisse</h4>
+                    <p class="small text-muted mb-4" data-i18n="docs-statuts-text">Document officiel décrivant l'organisation et le fonctionnement de l'association.</p>
                     <a href="uploads/statuts.pdf" class="btn btn-gold-action w-100" download>
-                        <i class="fas fa-download me-2"></i> Télécharger
+                        <i class="fas fa-download me-2"></i> <span data-i18n="docs-download">Télécharger</span>
                     </a>
                 </div>
             </div>
@@ -67,10 +68,10 @@
             <div class="col-12 col-md-6 col-lg-4">
                 <div class="info-card d-flex flex-column align-items-center text-center p-4">
                     <i class="fas fa-file-pdf fa-3x mb-3 text-danger"></i>
-                    <h4 class="h5 mb-2">Formulaire d'Adhésion</h4>
-                    <p class="small text-muted mb-4">Version papier du formulaire d'inscription à la paroisse.</p>
+                    <h4 class="h5 mb-2" data-i18n="docs-adhesion-title">Formulaire d'Adhésion</h4>
+                    <p class="small text-muted mb-4" data-i18n="docs-adhesion-text">Version papier du formulaire d'inscription à la paroisse.</p>
                     <a href="uploads/adhesion.pdf" class="btn btn-gold-action w-100" download>
-                        <i class="fas fa-download me-2"></i> Télécharger
+                        <i class="fas fa-download me-2"></i> <span data-i18n="docs-download">Télécharger</span>
                     </a>
                 </div>
             </div>
@@ -78,10 +79,10 @@
             <div class="col-12 col-md-6 col-lg-4">
                 <div class="info-card d-flex flex-column align-items-center text-center p-4">
                     <i class="fas fa-calendar-alt fa-3x mb-3 text-primary"></i>
-                    <h4 class="h5 mb-2">Calendrier Liturgique</h4>
-                    <p class="small text-muted mb-4">Détail des célébrations et événements pour l'année en cours.</p>
+                    <h4 class="h5 mb-2" data-i18n="docs-calendrier-title">Calendrier Liturgique</h4>
+                    <p class="small text-muted mb-4" data-i18n="docs-calendrier-text">Détail des célébrations et événements pour l'année en cours.</p>
                     <a href="uploads/calendrier.pdf" class="btn btn-gold-action w-100" download>
-                        <i class="fas fa-download me-2"></i> Télécharger
+                        <i class="fas fa-download me-2"></i> <span data-i18n="docs-download">Télécharger</span>
                     </a>
                 </div>
             </div>
