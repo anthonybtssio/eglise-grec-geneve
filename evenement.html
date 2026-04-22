@@ -18,11 +18,16 @@
 <body>
     <div class="utility-bar">
         <div class="container">
-            <button id="btnInstall" class="btn-install-app" data-i18n="install-btn">Appli</button>
-            <div class="lang-switcher">
-                <button class="lang-btn active-lang" id="btn-fr" onclick="setLang('fr')">FR</button>
-                <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
-                <button class="lang-btn" id="btn-ar" onclick="setLang('ar')">ع</button>
+            <div class="controls-wrapper">
+                <button class="theme-toggle" onclick="toggleTheme()" aria-label="Changer de thème">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <div class="lang-switcher">
+                    <button class="lang-btn active-lang" id="btn-fr" onclick="setLang('fr')">FR</button>
+                    <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+                    <button class="lang-btn" id="btn-ar" onclick="setLang('ar')">ع</button>
+                </div>
+                <button id="btnInstall" class="btn-install-app" data-i18n="install-btn">Appli</button>
             </div>
         </div>
     </div>
@@ -81,7 +86,10 @@
                 <h3 class="card-title">${event.title}</h3>
                 <h6 class="text-muted mb-3"><i class="far fa-calendar-alt me-2"></i>${new Date(event.date).toLocaleDateString(currentLang, {day: 'numeric', month: 'long', year: 'numeric'})}</h6>
                 <p class="card-text">${event.description}</p>
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLSf8gE1bgBc8-_N-3RLD3TTRNPzPy0_krkq_gTmKpudUFwrsCQ/viewform" target="_blank" class="btn btn-primary mt-3">${registerText[currentLang] || registerText['fr']}</a>
+                <div class="d-flex flex-column flex-md-row gap-2 justify-content-center mt-3">
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSf8gE1bgBc8-_N-3RLD3TTRNPzPy0_krkq_gTmKpudUFwrsCQ/viewform" target="_blank" class="btn btn-primary">${registerText[currentLang] || registerText['fr']}</a>
+                    <button class="btn-share" data-i18n="share-btn">Partager <i class="fas fa-share-alt"></i></button>
+                </div>
               </div>
             </div>
           `;

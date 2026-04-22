@@ -8,6 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="logo.png">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="Antioch GVA">
@@ -18,11 +19,16 @@
 <body>
     <div class="utility-bar">
         <div class="container">
-            <button id="btnInstall" class="btn-install-app" data-i18n="install-btn">Appli</button>
-            <div class="lang-switcher">
-                <button class="lang-btn active-lang" id="btn-fr" onclick="setLang('fr')">FR</button>
-                <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
-                <button class="lang-btn" id="btn-ar" onclick="setLang('ar')">ع</button>
+            <div class="controls-wrapper">
+                <button class="theme-toggle" onclick="toggleTheme()" aria-label="Changer de thème">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <div class="lang-switcher">
+                    <button class="lang-btn active-lang" id="btn-fr" onclick="setLang('fr')">FR</button>
+                    <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+                    <button class="lang-btn" id="btn-ar" onclick="setLang('ar')">ع</button>
+                </div>
+                <button id="btnInstall" class="btn-install-app" data-i18n="install-btn">Appli</button>
             </div>
         </div>
     </div>
@@ -41,7 +47,7 @@
                 <li class="nav-item"><a class="nav-link" href="evenement.html" data-i18n="nav-events">Événements</a></li>
                 <li class="nav-item"><a class="nav-link" href="documents.php" data-i18n="nav-docs">Documents</a></li>
                 <li class="nav-item"><a class="nav-link" href="contact.html" data-i18n="nav-contact">Contact</a></li>
-                <li class="nav-item"><a class="nav-link" href="apropos.html" data-i18n="nav-about">À propos</a></li>
+                <li class="nav-item hide-in-app"><a class="nav-link" href="apropos.html" data-i18n="nav-about">À propos</a></li>
                 <li class="nav-item"><a class="nav-link" href="InscrivezVous.html" data-i18n="nav-register">Inscription</a></li>
             </ul>
         </div>

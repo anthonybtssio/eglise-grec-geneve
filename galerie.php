@@ -11,6 +11,7 @@ $imgs = array_filter($p, function($v) { return $v['t'] === 'img'; });
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="logo.png">
     <style>
         .gallery-img { width: 100%; height: 280px; object-fit: cover; border-radius: 12px; transition: 0.3s; cursor: pointer; }
         .gallery-img:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.15); }
@@ -20,11 +21,16 @@ $imgs = array_filter($p, function($v) { return $v['t'] === 'img'; });
 <body>
     <div class="utility-bar">
         <div class="container">
-            <button id="btnInstall" class="btn-install-app" data-i18n="install-btn">Appli</button>
-            <div class="lang-switcher">
-                <button class="lang-btn active-lang" id="btn-fr" onclick="setLang('fr')">FR</button>
-                <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
-                <button class="lang-btn" id="btn-ar" onclick="setLang('ar')">ع</button>
+            <div class="controls-wrapper">
+                <button class="theme-toggle" onclick="toggleTheme()" aria-label="Changer de thème">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <div class="lang-switcher">
+                    <button class="lang-btn active-lang" id="btn-fr" onclick="setLang('fr')">FR</button>
+                    <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+                    <button class="lang-btn" id="btn-ar" onclick="setLang('ar')">ع</button>
+                </div>
+                <button id="btnInstall" class="btn-install-app" data-i18n="install-btn">Appli</button>
             </div>
         </div>
     </div>
@@ -42,7 +48,7 @@ $imgs = array_filter($p, function($v) { return $v['t'] === 'img'; });
                 <li class="nav-item"><a class="nav-link" href="evenement.html">Événements</a></li>
                 <li class="nav-item"><a class="nav-link" href="documents.php">Documents</a></li>
                 <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-                <li class="nav-item"><a class="nav-link" href="apropos.html">À propos</a></li>
+                <li class="nav-item hide-in-app"><a class="nav-link" href="apropos.html">À propos</a></li>
                 <li class="nav-item"><a class="nav-link" href="InscrivezVous.html">Inscription</a></li>
             </ul>
         </div>

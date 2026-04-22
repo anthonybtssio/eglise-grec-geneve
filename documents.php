@@ -7,6 +7,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="logo.png">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="Antioch GVA">
@@ -17,11 +18,16 @@
 <body>
     <div class="utility-bar">
         <div class="container">
-            <button id="btnInstall" class="btn-install-app" data-i18n="install-btn">Appli</button>
-            <div class="lang-switcher">
-                <button class="lang-btn active-lang" id="btn-fr" onclick="setLang('fr')">FR</button>
-                <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
-                <button class="lang-btn" id="btn-ar" onclick="setLang('ar')">ع</button>
+            <div class="controls-wrapper">
+                <button class="theme-toggle" onclick="toggleTheme()" aria-label="Changer de thème">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <div class="lang-switcher">
+                    <button class="lang-btn active-lang" id="btn-fr" onclick="setLang('fr')">FR</button>
+                    <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+                    <button class="lang-btn" id="btn-ar" onclick="setLang('ar')">ع</button>
+                </div>
+                <button id="btnInstall" class="btn-install-app" data-i18n="install-btn">Appli</button>
             </div>
         </div>
     </div>
@@ -42,7 +48,7 @@
                     <li class="nav-item"><a class="nav-link" href="evenement.html" data-i18n="nav-events">Événements</a></li>
                     <li class="nav-item"><a class="nav-link" href="documents.php" data-i18n="nav-docs">Documents</a></li>
                     <li class="nav-item"><a class="nav-link" href="contact.html" data-i18n="nav-contact">Contact</a></li>
-                    <li class="nav-item"><a class="nav-link" href="apropos.html" data-i18n="nav-about">À propos</a></li>
+                    <li class="nav-item hide-in-app"><a class="nav-link" href="apropos.html" data-i18n="nav-about">À propos</a></li>
                     <li class="nav-item"><a class="nav-link" href="InscrivezVous.html" data-i18n="nav-register">Inscription</a></li>
                 </ul>
             </div>
@@ -60,9 +66,10 @@
                     <i class="fas fa-file-pdf fa-3x mb-3 text-danger"></i>
                     <h4 class="h5 mb-2" data-i18n="docs-statuts-title">Statuts de la Paroisse</h4>
                     <p class="small text-muted mb-4" data-i18n="docs-statuts-text">Document officiel décrivant l'organisation et le fonctionnement de l'association.</p>
-                    <a href="uploads/statuts.pdf" class="btn btn-gold-action w-100" download>
+                    <a href="uploads/statuts.pdf" class="btn btn-gold-action w-100 mb-2" download>
                         <i class="fas fa-download me-2"></i> <span data-i18n="docs-download">Télécharger</span>
                     </a>
+                    <button class="btn-share w-100" data-i18n="share-btn">Partager <i class="fas fa-share-alt"></i></button>
                 </div>
             </div>
 
@@ -71,9 +78,10 @@
                     <i class="fas fa-file-pdf fa-3x mb-3 text-danger"></i>
                     <h4 class="h5 mb-2" data-i18n="docs-adhesion-title">Formulaire d'Adhésion</h4>
                     <p class="small text-muted mb-4" data-i18n="docs-adhesion-text">Version papier du formulaire d'inscription à la paroisse.</p>
-                    <a href="uploads/adhesion.pdf" class="btn btn-gold-action w-100" download>
+                    <a href="uploads/adhesion.pdf" class="btn btn-gold-action w-100 mb-2" download>
                         <i class="fas fa-download me-2"></i> <span data-i18n="docs-download">Télécharger</span>
                     </a>
+                    <button class="btn-share w-100" data-i18n="share-btn">Partager <i class="fas fa-share-alt"></i></button>
                 </div>
             </div>
 
@@ -82,9 +90,10 @@
                     <i class="fas fa-file-pdf fa-3x mb-3 text-danger"></i>
                     <h4 class="h5 mb-2" data-i18n="docs-calendrier-title">Calendrier Liturgique</h4>
                     <p class="small text-muted mb-4" data-i18n="docs-calendrier-text">Détail des célébrations et événements pour l'année en cours.</p>
-                    <a href="uploads/calendrier.pdf" class="btn btn-gold-action w-100" download>
+                    <a href="uploads/calendrier.pdf" class="btn btn-gold-action w-100 mb-2" download>
                         <i class="fas fa-download me-2"></i> <span data-i18n="docs-download">Télécharger</span>
                     </a>
+                    <button class="btn-share w-100" data-i18n="share-btn">Partager <i class="fas fa-share-alt"></i></button>
                 </div>
             </div>
         </div>

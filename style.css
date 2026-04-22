@@ -6,75 +6,128 @@
     --gold-color: #D4AF37;
     --gold-bright: #FFD700;
     --ivory-bg: #fdfaf5;
-    --app-paper: #f9f7f0; /* Couleur parchemin pour l'appli */
-    --transition-3d: all 0.2s ease;
+    --app-paper: #f9f7f0;
+    --text-color: #050a14;
+    --card-bg: #ffffff;
+    --transition-3d: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* ===== STYLE SITE WEB (STANDARD) ===== */
-body { background-color: #ffffff; font-family: 'Montserrat', sans-serif; margin: 0; padding: 0; }
-.utility-bar { background: var(--primary-light); border-bottom: 1px solid rgba(212, 175, 55, 0.2); padding: 8px 0; display: flex; align-items: center; }
-.navbar { background: var(--primary-color) !important; border-bottom: 3px solid var(--gold-color); min-height: 80px; display: flex; align-items: center; }
-.app-bottom-nav { display: none; } /* Invisible sur le web */
+/* Variables Mode Sombre */
+[data-theme="dark"] {
+    --primary-color: #000000;
+    --primary-light: #121212;
+    --gold-color: #D4AF37;
+    --ivory-bg: #1a1a1a;
+    --app-paper: #121212;
+    --text-color: #e0e0e0;
+    --card-bg: #1e1e1e;
+}
 
-/* ===== SIGNATURE EXCLUSIVE "MODE APPLI" (STANDALONE) ===== */
+body { 
+    background-color: var(--ivory-bg); 
+    color: var(--text-color);
+    font-family: 'Montserrat', sans-serif; 
+    margin: 0; padding: 0;
+    transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+/* ===== BARRE D'UTILITAIRES UNIFIÉE ===== */
+.utility-bar {
+    background: var(--primary-light);
+    border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+    padding: 6px 0;
+    min-height: 40px;
+}
+
+.utility-bar .container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.controls-wrapper {
+    display: flex;
+    align-items: center;
+    background: rgba(255,255,255,0.05);
+    padding: 3px;
+    border-radius: 50px;
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    gap: 10px;
+}
+
+.lang-switcher { display: flex; gap: 4px; padding-right: 10px; border-right: 1px solid rgba(212, 175, 55, 0.2); }
+
+.lang-btn {
+    background: transparent; border: none; color: var(--gold-color) !important;
+    border-radius: 50%; width: 26px; height: 26px; font-size: 0.6rem; font-weight: 800;
+    display: flex; align-items: center; justify-content: center; cursor: pointer;
+}
+
+.lang-btn.active-lang { background: var(--gold-color); color: var(--primary-color) !important; }
+
+.btn-install-app {
+    background: var(--gold-color); color: var(--primary-color) !important;
+    border: none; border-radius: 50px; padding: 4px 14px;
+    font-size: 0.65rem; font-weight: 900; text-transform: uppercase;
+    text-decoration: none;
+}
+
+.theme-toggle { background: transparent; border: none; color: var(--gold-color); font-size: 0.9rem; cursor: pointer; padding: 0 10px; }
+
+/* ===== NAVIGATION ===== */
+.navbar { background: var(--primary-color) !important; border-bottom: 3px solid var(--gold-color); min-height: 80px; }
+.navbar-brand { color: var(--gold-color) !important; font-family: 'Playfair Display', serif; font-weight: 900; font-size: 1.1rem; }
+.nav-link { color: rgba(255,255,255,0.85) !important; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; padding: 10px 12px !important; }
+.nav-link.active { color: var(--gold-color) !important; }
+
+/* ===== BOUTON DE PARTAGE PRESTIGIEUX ===== */
+.btn-share {
+    background: transparent;
+    border: 2px solid var(--gold-color);
+    color: var(--gold-color);
+    border-radius: 50px;
+    padding: 8px 25px;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.btn-share:hover {
+    background: var(--gold-color);
+    color: var(--primary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+}
+
+/* ===== MODE APPLI NATIVE ===== */
 @media (display-mode: standalone), (display-mode: fullscreen) {
-    body {
-        background-color: var(--app-paper) !important; /* Fond parchemin */
-        padding-bottom: 75px !important;
-        padding-top: 60px !important;
-    }
-
-    /* Masquer le superflu du Web */
+    .hide-in-app { display: none !important; }
+    body { background-color: var(--app-paper) !important; padding-bottom: 75px !important; padding-top: 60px !important; }
     .utility-bar, footer, .navbar-toggler, .navbar-nav { display: none !important; }
-
-    /* Header épuré type "App Native" */
-    .navbar {
-        position: fixed !important; top: 0; left: 0; width: 100%;
-        height: 60px !important; min-height: 60px !important;
-        background: var(--primary-color) !important;
-        justify-content: center !important;
-        z-index: 10000;
-    }
-
-    .navbar-brand { font-size: 0.9rem !important; text-align: center; letter-spacing: 1px; margin: 0 !important; }
-
-    /* Barre de Navigation Basse (Tab Bar) Prestigieuse */
+    .navbar { position: fixed !important; top: 0; width: 100%; height: 60px !important; min-height: 60px !important; justify-content: center !important; z-index: 10000; }
     .app-bottom-nav {
-        display: flex !important;
-        position: fixed !important; bottom: 0; left: 0; width: 100%;
-        background: var(--primary-color) !important;
-        border-top: 2px solid var(--gold-color) !important;
-        height: 70px;
-        z-index: 10000;
-        justify-content: space-around;
-        align-items: center;
-        padding-bottom: env(safe-area-inset-bottom);
-        box-shadow: 0 -5px 20px rgba(0,0,0,0.3);
+        display: flex !important; position: fixed !important; bottom: 0; left: 0; width: 100%;
+        background: var(--card-bg) !important; border-top: 1px solid rgba(212, 175, 55, 0.2) !important;
+        height: 70px; z-index: 10000; justify-content: space-around; align-items: center;
+        padding-bottom: env(safe-area-inset-bottom); box-shadow: 0 -5px 25px rgba(0,0,0,0.1);
     }
-
-    .tab-item {
-        color: rgba(255,255,255,0.5) !important;
-        text-decoration: none !important;
-        display: flex; flex-direction: column; align-items: center;
-        gap: 4px; font-size: 0.6rem !important; font-weight: 700; text-transform: uppercase;
-    }
-
-    .tab-item i { font-size: 1.2rem; }
+    .tab-item { color: #8e8e93 !important; text-decoration: none !important; display: flex; flex-direction: column; align-items: center; gap: 4px; font-size: 0.6rem !important; font-weight: 700; }
+    .tab-item i { font-size: 1.3rem; transition: 0.2s; }
     .tab-item.active { color: var(--gold-color) !important; }
 }
 
-/* Styles communs */
-.navbar-brand { color: var(--gold-color) !important; font-family: 'Playfair Display', serif; font-weight: 900; }
-.nav-link { color: rgba(255,255,255,0.85) !important; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; padding: 10px 12px !important; }
-.nav-link.active { color: var(--gold-color) !important; }
-.lang-btn { background: transparent; border: 1px solid var(--gold-color); color: var(--gold-color) !important; border-radius: 4px; width: 30px; height: 22px; font-size: 0.6rem; font-weight: 700; display: flex; align-items: center; justify-content: center; cursor: pointer; }
-.lang-btn.active-lang { background: var(--gold-color); color: var(--primary-color) !important; }
-.registration-container, .bg-white.p-4.p-md-5.rounded.shadow-sm.border { background: var(--ivory-bg) !important; border-radius: 20px; border: 1px solid rgba(212, 175, 55, 0.2) !important; }
-.btn-gold-action { background: var(--gold-color) !important; color: var(--primary-color) !important; border-radius: 50px; font-weight: 800; padding: 1rem 2rem; border: none; text-transform: uppercase; }
-.info-card { background: #fff; border-radius: 15px; padding: 2.5rem 1.5rem; border: 1px solid rgba(212, 175, 55, 0.1); height: 100%; box-shadow: 0 10px 30px rgba(0,0,0,0.03); transition: 0.3s; }
-.info-card:hover { transform: translateY(-5px); border-color: var(--gold-color); }
+/* Cartes & Éléments */
+.info-card { background: var(--card-bg); border-radius: 20px; padding: 2.5rem 1.5rem; border: 1px solid rgba(212, 175, 55, 0.1); height: 100%; box-shadow: 0 10px 30px rgba(0,0,0,0.03); transition: 0.3s; color: var(--text-color); }
+.registration-container, .bg-white.p-4.p-md-5.rounded.shadow-sm.border { background: var(--card-bg) !important; border-radius: 25px; border: 1px solid rgba(212, 175, 55, 0.2) !important; color: var(--text-color); }
+.form-control { background: var(--ivory-bg); border-color: rgba(212, 175, 55, 0.1); color: var(--text-color); }
 .carousel-item img { height: 600px; object-fit: contain; background: #000; }
-@media (max-width: 768px) { .carousel-item img { height: 350px; } .utility-bar .container { justify-content: center; } }
+@media (max-width: 768px) { .carousel-item img { height: 350px; } }
 footer { background: var(--primary-color) !important; padding: 4rem 0; border-top: 4px solid var(--gold-color); color: white; }
 .social-icons a { font-size: 1.5rem; margin: 0 12px; color: var(--gold-color) !important; }
-.btn-install-app { background: var(--gold-color); color: var(--primary-color) !important; border: none; border-radius: 4px; padding: 3px 12px; font-size: 0.65rem; font-weight: 800; text-transform: uppercase; text-decoration: none; }
+.app-bottom-nav { display: none; }

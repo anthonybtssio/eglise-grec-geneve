@@ -13,15 +13,21 @@ usort($events, function($a, $b) { return strtotime($a['date']) - strtotime($b['d
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="logo.png">
 </head>
 <body>
     <div class="utility-bar">
         <div class="container">
-            <button id="btnInstall" class="btn-install-app" data-i18n="install-btn">Appli</button>
-            <div class="lang-switcher">
-                <button class="lang-btn active-lang" id="btn-fr" onclick="setLang('fr')">FR</button>
-                <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
-                <button class="lang-btn" id="btn-ar" onclick="setLang('ar')">ع</button>
+            <div class="controls-wrapper">
+                <button class="theme-toggle" onclick="toggleTheme()" aria-label="Changer de thème">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <div class="lang-switcher">
+                    <button class="lang-btn active-lang" id="btn-fr" onclick="setLang('fr')">FR</button>
+                    <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+                    <button class="lang-btn" id="btn-ar" onclick="setLang('ar')">ع</button>
+                </div>
+                <button id="btnInstall" class="btn-install-app" data-i18n="install-btn">Appli</button>
             </div>
         </div>
     </div>
@@ -40,7 +46,7 @@ usort($events, function($a, $b) { return strtotime($a['date']) - strtotime($b['d
                     <li class="nav-item"><a class="nav-link active" href="evenement">Événements</a></li>
                     <li class="nav-item"><a class="nav-link" href="documents">Documents</a></li>
                     <li class="nav-item"><a class="nav-link" href="contact">Contact</a></li>
-                    <li class="nav-item"><a class="nav-link" href="apropos">À propos</a></li>
+                    <li class="nav-item hide-in-app"><a class="nav-link" href="apropos">À propos</a></li>
                     <li class="nav-item"><a class="nav-link" href="InscrivezVous">Inscription</a></li>
                 </ul>
             </div>
@@ -113,5 +119,6 @@ usort($events, function($a, $b) { return strtotime($a['date']) - strtotime($b['d
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
