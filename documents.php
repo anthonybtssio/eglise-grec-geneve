@@ -1,96 +1,111 @@
-<?php
-$json = "photos.json";
-$p = file_exists($json) ? json_decode(file_get_contents($json), 1) : [];
-$docs = array_filter($p, function($v) { return $v['t'] === 'doc'; });
-?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Documents - Église Antiochian Orthodox Geneva</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documents Officiels - Église Antiochian Orthodox Geneva Switzerland</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="style.css">
-    <style>
-        .doc-card { border: none; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: 0.3s; height: 100%; }
-        .doc-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
-        .doc-icon { height: 120px; display: flex; align-items: center; justify-content: center; background: #f8f9fa; border-top-left-radius: 15px; border-top-right-radius: 15px; }
-        .btn-download { border-radius: 10px; font-weight: bold; }
-    </style>
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="logo.png">
 </head>
 <body>
-
-<nav class="navbar navbar-expand-lg navbar-dark sticky-top">
-    <div class="container">
-        <a class="navbar-brand" href="index.html">Antiochian Orthodox</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarMenu">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link" href="index.html">Accueil</a></li>
-                <li class="nav-item"><a class="nav-link" href="horaire.html">Horaire</a></li>
-                <li class="nav-item"><a class="nav-link" href="localisation.html">Localisation</a></li>
-                <li class="nav-item"><a class="nav-link" href="evenement.html">Événements</a></li>
-                <li class="nav-item"><a class="nav-link active" href="documents.php">Documents</a></li>
-                <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-                <li class="nav-item"><a class="nav-link" href="apropos.html">À propos</a></li>
-                <li class="nav-item"><a class="nav-link" href="InscrivezVous.html">Inscription</a></li>
-            </ul>
-            <div class="lang-switcher">
-                <button class="lang-btn active-lang" id="btn-fr" onclick="setLang('fr')">FR</button>
-                <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
-                <button class="lang-btn" id="btn-ar" onclick="setLang('ar')">ع</button>
-            </div>
-        </div>
-    </div>
-</nav>
-
-<main class="container py-5">
-    <div class="text-center mb-5">
-        <h1 class="display-4 fw-bold">📄 Documents & Téléchargements</h1>
-        <p class="text-muted">Retrouvez ici tous les documents administratifs et paroissiaux.</p>
-    </div>
-
-    <div class="row g-4">
-        <?php foreach($docs as $v): ?>
-            <div class="col-lg-3 col-md-4 col-sm-6">
-                <div class="card doc-card text-center">
-                    <div class="doc-icon">
-                        <?php 
-                        $icon = "fa-file-alt";
-                        if($v['ext'] == 'pdf') $icon = "fa-file-pdf text-danger";
-                        if(in_array($v['ext'], ['doc', 'docx'])) $icon = "fa-file-word text-primary";
-                        if(in_array($v['ext'], ['xls', 'xlsx'])) $icon = "fa-file-excel text-success";
-                        ?>
-                        <i class="fas <?= $icon ?> fa-4x"></i>
-                    </div>
-                    <div class="card-body">
-                        <h6 class="card-title fw-bold text-dark"><?= $v['d'] ?></h6>
-                        <p class="text-muted small">Type: <?= strtoupper($v['ext']) ?> | <?= $v['date'] ?? '' ?></p>
-                        <a href="<?= $v['u'] ?>" target="_blank" class="btn btn-outline-primary btn-sm btn-download w-100">
-                            <i class="fas fa-download me-1"></i> Ouvrir
-                        </a>
-                    </div>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Antiochian Orthodox <span class="d-none d-sm-inline">Geneva</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarMenu">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Accueil</a></li>
+                    <li class="nav-item"><a class="nav-link" href="horaire.html">Horaire</a></li>
+                    <li class="nav-item"><a class="nav-link" href="localisation.html">Localisation</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="documents.php">Documents</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="apropos.html">À propos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="InscrivezVous.html">Inscription</a></li>
+                </ul>
+                <div class="lang-switcher">
+                    <button class="lang-btn active-lang" id="btn-fr" onclick="setLang('fr')">FR</button>
+                    <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+                    <button class="lang-btn" id="btn-ar" onclick="setLang('ar')">ع</button>
                 </div>
             </div>
-        <?php endforeach; ?>
+        </div>
+    </nav>
 
-        <?php if(empty($docs)): ?>
-            <div class="text-center py-5">
-                <i class="fas fa-folder-open fa-4x text-light mb-3"></i>
-                <p class="text-muted">Aucun document pour le moment.</p>
+    <main class="container py-5">
+        <h1 class="text-center section-title">Documents de la Paroisse</h1>
+        <p class="text-center text-muted mb-5">Retrouvez ici tous les documents officiels, statuts et formulaires de notre communauté.</p>
+
+        <div class="row g-4">
+            <!-- Grille de documents pour une meilleure réactivité que le tableau -->
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="info-card d-flex flex-column align-items-center text-center p-4">
+                    <i class="fas fa-file-pdf fa-3x mb-3 text-danger"></i>
+                    <h4 class="h5 mb-2">Statuts de la Paroisse</h4>
+                    <p class="small text-muted mb-4">Document officiel décrivant l'organisation et le fonctionnement de l'association.</p>
+                    <a href="uploads/statuts.pdf" class="btn btn-gold-action w-100" download>
+                        <i class="fas fa-download me-2"></i> Télécharger
+                    </a>
+                </div>
             </div>
-        <?php endif; ?>
-    </div>
-</main>
 
-<footer class="text-center py-5 border-top mt-5 bg-dark text-white">
-    <div class="container">
-        <p>&copy; 2025 Église Antiochian Orthodox Geneva Switzerland</p>
-    </div>
-</footer>
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="info-card d-flex flex-column align-items-center text-center p-4">
+                    <i class="fas fa-file-pdf fa-3x mb-3 text-danger"></i>
+                    <h4 class="h5 mb-2">Formulaire d'Adhésion</h4>
+                    <p class="small text-muted mb-4">Version papier du formulaire d'inscription à la paroisse.</p>
+                    <a href="uploads/adhesion.pdf" class="btn btn-gold-action w-100" download>
+                        <i class="fas fa-download me-2"></i> Télécharger
+                    </a>
+                </div>
+            </div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="info-card d-flex flex-column align-items-center text-center p-4">
+                    <i class="fas fa-calendar-alt fa-3x mb-3 text-primary"></i>
+                    <h4 class="h5 mb-2">Calendrier Liturgique</h4>
+                    <p class="small text-muted mb-4">Détail des célébrations et événements pour l'année en cours.</p>
+                    <a href="uploads/calendrier.pdf" class="btn btn-gold-action w-100" download>
+                        <i class="fas fa-download me-2"></i> Télécharger
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 mb-4">
+                    <h3 class="text-white mb-3">Antiochian Orthodox Geneva Switzerland</h3>
+                    <div class="social-icons">
+                        <a href="https://m.facebook.com/share/p/16q4RCaz4V/?mibextid=wwXIfr&wtsid=rdr_0NXitAsiyx5FxvxpR" target="_blank"><i class="fab fa-facebook"></i></a>
+                        <a href="https://www.instagram.com/antioch_geneve?igsh=ZjM0MW9qY2VpeDNh" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.tiktok.com/@user1045672728666" target="_blank"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                <div class="col-12 mb-4">
+                    <p class="mb-1">
+                        <a href="mentions-legales.html">Mentions légales</a> | 
+                        <a href="politique-confidentialite.html">Politique de confidentialité</a>
+                    </p>
+                    <p class="small text-white-50">&copy; 2025 Tous droits réservés</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('sw.js');
+      }
+    </script>
 </body>
 </html>

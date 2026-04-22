@@ -150,9 +150,23 @@ body {
 /* Carrousel */
 .carousel-item img { height: 600px; object-fit: contain; background: #000; }
 
-@media (max-width: 768px) {
-    .navbar { min-height: 75px; }
-    .carousel-item img { height: 350px; }
+/* Bouton Installation App */
+.btn-outline-gold {
+    border: 2px solid var(--gold-color);
+    color: var(--gold-color);
+    background: transparent;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    padding: 0.4rem 1rem;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+}
+
+.btn-outline-gold:hover {
+    background: var(--gold-color);
+    color: var(--primary-color);
+    transform: translateY(-2px);
 }
 
 footer {
