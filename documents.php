@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Documents Officiels - Église Antiochian Orthodox Geneva Switzerland</title>
+    <title data-i18n="docs-seo-title">Documents Officiels - Église Antiochian Orthodox Geneva Switzerland</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="style.css">
@@ -15,10 +15,19 @@
     <link rel="manifest" href="manifest.json">
 </head>
 <body>
+    <div id="installPopup" class="install-popup">
+        <div class="popup-content">
+            <span class="popup-close" id="closePopup">&times;</span>
+            <img src="logo.png" alt="Logo" class="popup-icon">
+            <h2 class="popup-title" data-i18n="popup-title">Installer l'application</h2>
+            <p class="popup-text" data-i18n="popup-text">Installez l'appli sur votre écran d'accueil...</p>
+            <button class="btn-install-now" id="startInstall" data-i18n="popup-btn">Installer maintenant</button>
+        </div>
+    </div>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
         <div class="container">
-            <a class="navbar-brand" href="index.html">Antiochian Orthodox <span class="d-none d-sm-inline">Geneva</span></a>
+            <a class="navbar-brand" href="index.html" data-i18n="nav-brand">Antiochian Orthodox <span class="d-none d-sm-inline">Geneva</span></a>
             
             <div class="nav-controls">
                 <button id="btnInstall" class="btn-install-app" data-i18n="install-btn">Appli</button>
@@ -78,7 +87,7 @@
 
             <div class="col-12 col-md-6 col-lg-4">
                 <div class="info-card d-flex flex-column align-items-center text-center p-4">
-                    <i class="fas fa-calendar-alt fa-3x mb-3 text-primary"></i>
+                    <i class="fas fa-file-pdf fa-3x mb-3 text-danger"></i>
                     <h4 class="h5 mb-2" data-i18n="docs-calendrier-title">Calendrier Liturgique</h4>
                     <p class="small text-muted mb-4" data-i18n="docs-calendrier-text">Détail des célébrations et événements pour l'année en cours.</p>
                     <a href="uploads/calendrier.pdf" class="btn btn-gold-action w-100" download>
@@ -93,7 +102,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-12 mb-4">
-                    <h3 class="text-white mb-3">Antiochian Orthodox Geneva Switzerland</h3>
+                    <h3 class="text-white mb-3" data-i18n="footer-title">Antiochian Orthodox Geneva Switzerland</h3>
                     <div class="social-icons">
                         <a href="https://m.facebook.com/share/p/16q4RCaz4V/?mibextid=wwXIfr&wtsid=rdr_0NXitAsiyx5FxvxpR" target="_blank"><i class="fab fa-facebook"></i></a>
                         <a href="https://www.instagram.com/antioch_geneve?igsh=ZjM0MW9qY2VpeDNh" target="_blank"><i class="fab fa-instagram"></i></a>
@@ -102,10 +111,10 @@
                 </div>
                 <div class="col-12 mb-4">
                     <p class="mb-1">
-                        <a href="mentions-legales.html">Mentions légales</a> | 
-                        <a href="politique-confidentialite.html">Politique de confidentialité</a>
+                        <a href="mentions-legales.html" data-i18n="footer-legal">Mentions légales</a> | 
+                        <a href="politique-confidentialite.html" data-i18n="footer-privacy">Politique de confidentialité</a>
                     </p>
-                    <p class="small text-white-50">&copy; 2025 Tous droits réservés</p>
+                    <p class="small text-white-50" data-i18n="footer-copyright">&copy; 2025 Tous droits réservés</p>
                 </div>
             </div>
         </div>

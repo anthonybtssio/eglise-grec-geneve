@@ -72,17 +72,80 @@ body {
     color: var(--primary-color) !important;
 }
 
+/* ===== Pop-up d'Installation PWA ===== */
+.install-popup {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(5, 10, 20, 0.85);
+    backdrop-filter: blur(8px);
+    z-index: 2000;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.popup-content {
+    background: white;
+    width: 100%;
+    max-width: 450px;
+    border-radius: 25px;
+    padding: 2.5rem;
+    position: relative;
+    text-align: center;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+    animation: popupFade 0.4s ease;
+}
+
+@keyframes popupFade { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
+
+.popup-close {
+    position: absolute;
+    top: 20px; right: 20px;
+    font-size: 1.5rem;
+    color: #ccc;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.popup-close:hover { color: var(--gold-color); }
+
+.popup-icon {
+    width: 80px; height: 80px;
+    border-radius: 20px;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.popup-title { font-family: 'Playfair Display', serif; font-weight: 800; margin-bottom: 1rem; color: var(--primary-color); }
+
+.popup-text { font-size: 0.95rem; color: #555; line-height: 1.6; margin-bottom: 2rem; }
+
+.btn-install-now {
+    background: var(--primary-color);
+    color: var(--gold-color);
+    border: none;
+    border-radius: 50px;
+    padding: 1rem 2rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    width: 100%;
+    transition: 0.3s;
+}
+
+.btn-install-now:hover { background: var(--gold-color); color: var(--primary-color); transform: translateY(-3px); }
+
+/* Menu Uniforme */
 .btn-install-app {
     background: var(--gold-color) !important;
     color: var(--primary-color) !important;
     border: none;
-    border-radius: 20px;
-    padding: 6px 14px;
+    border-radius: 50px;
+    padding: 6px 15px;
     font-size: 0.75rem;
     font-weight: 800;
     text-transform: uppercase;
-    display: none; /* Activé par JS */
-    box-shadow: 0 4px 10px rgba(212, 175, 55, 0.3);
+    display: block !important; /* Toujours visible comme demandé */
 }
 
 .navbar-toggler { order: 3; border-color: rgba(212, 175, 55, 0.5) !important; }
