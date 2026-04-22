@@ -17,9 +17,10 @@ const i18n = {
         'reg-email': "Email", 'reg-phone': "Téléphone", 'reg-address': "Adresse complète", 'reg-family-count': "Nombre de personnes dans la famille", 'reg-birthdate': "Date de naissance (référent)", 'reg-privacy': "En vous inscrivant, vous acceptez notre politique de confidentialité.", 'reg-privacy-link': "politique de confidentialité",
         'reg-placeholder-name': "Votre nom", 'reg-placeholder-firstname': "Votre prénom", 'reg-placeholder-email': "votre@email.com", 'reg-placeholder-phone': "+41 00 000 00 00", 'reg-placeholder-address': "Rue, numéro, code postal et ville",
         'popup-title': "Installer l'application",
-        'popup-text': "Installez l'appli sur votre écran d'accueil pour y accéder sans réseau.<br><br><strong>IMPORTANT :</strong> Décochez la case 'Ouvrir comme app web' si elle apparaît.",
-        'popup-ios': "Sur iPhone : Appuyez sur <i class='fas fa-external-link-alt'></i> puis sur 'Sur l'écran d'accueil'.",
-        'popup-btn': "Installer maintenant",
+        'popup-text': "Installez l'appli sur votre écran d'accueil pour y accéder comme une vraie application.<br><br><strong>SUR ANDROID :</strong> Cliquez sur 'Installer'.<br><strong>SUR IPHONE (Safari) :</strong> Cliquez sur l'icône <i class='fas fa-share-square'></i> (Partager) en bas au centre, puis faites défiler et cliquez sur <strong>'Sur l'écran d'accueil'</strong>.<br><br><strong>IMPORTANT :</strong> Si une case 'Ouvrir comme app web' apparaît, veillez à la <strong>décocher</strong>.",
+        'popup-ios': "Sur iPhone : Utilisez Safari, appuyez sur le bouton Partager en bas, puis 'Sur l'écran d'accueil'.",
+        'popup-btn': "Démarrer l'installation"
+,
         'footer-title': "Antiochian Orthodox Geneva Switzerland", 'footer-legal': "Mentions légales", 'footer-privacy': "Politique de confidentialité", 'footer-copyright': "&copy; 2025 Tous droits réservés",
         'schedule-title': "Horaires des messes", 'schedule-subtitle': "Voici les horaires de l'Église Grec-Orthodoxe d'Antioche à Genève :",
         'schedule-day': "Jour", 'schedule-time': "Horaire", 'schedule-place': "Lieu", 'schedule-2su': "2ème Dimanche du mois", 'schedule-4su': "4ème Dimanche du mois", 'schedule-church': "Église Sainte-Rita, Chemin de la Chênaie 145C, 1293 Bellevue",

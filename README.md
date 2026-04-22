@@ -7,6 +7,7 @@ app
 route 
 api 
 3d
+taille logo
 
 a faire : C'est un excellent choix. Avec ce trio, tu couvres tout : la communication (Notifications), la croissance (Partage) et la gestion simplifiée (Cloudinary pour ton compte Admin).
 

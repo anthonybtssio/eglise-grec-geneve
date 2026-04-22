@@ -1,5 +1,6 @@
-const CACHE_NAME = 'antioch-v2';
+const CACHE_NAME = 'antioch-v3';
 const ASSETS_TO_CACHE = [
+  './',
   'index.html',
   'contact.html',
   'horaire.html',
@@ -12,14 +13,10 @@ const ASSETS_TO_CACHE = [
   'script.js',
   'logo.png',
   'manifest.json',
-  'face.jpg',
-  'Resurrection.jpg',
-  'IMG_7211.JPG',
-  'IMG_7225.PNG',
-  'IMG_7226.PNG'
+  'face.jpg'
 ];
 
-// Installation : Mise en cache de tout le site
+// Installation
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
@@ -29,28 +26,20 @@ self.addEventListener('install', (event) => {
   self.skipWaiting();
 });
 
-// Activation : Nettoyage des anciens caches
+// Activation
 self.addEventListener('activate', (event) => {
   event.waitUntil(
-    caches.keys().then((cacheNames) => {
-      return Promise.all(
-        cacheNames.map((cache) => {
-          if (cache !== CACHE_NAME) {
-            return caches.delete(cache);
-          }
-        })
-      );
+    caches.keys().then((keys) => {
+      return Promise.all(keys.filter(key => key !== CACHE_NAME).map(key => caches.delete(key)));
     })
   );
 });
 
-// Récupération : Priorité au cache pour le hors-ligne
+// Stratégie : Réseau d'abord, sinon Cache (Évite les bugs d'affichage)
 self.addEventListener('fetch', (event) => {
   event.respondWith(
-    caches.match(event.request).then((response) => {
-      return response || fetch(event.request).catch(() => {
-        // Optionnel : retourner une page d'erreur personnalisée ici
-      });
+    fetch(event.request).catch(() => {
+      return caches.match(event.request);
     })
   );
 });

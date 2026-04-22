@@ -17,6 +17,26 @@ $imgs = array_filter($p, function($v) { return $v['t'] === 'img'; });
         .card { border: none; background: transparent; }
     </style>
 </head>
+<body>
+    <div class="utility-bar">
+        <div class="container">
+            <button id="btnInstall" class="btn-install-app" data-i18n="install-btn">Appli</button>
+            <div class="lang-switcher">
+                <button class="lang-btn active-lang" id="btn-fr" onclick="setLang('fr')">FR</button>
+                <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+                <button class="lang-btn" id="btn-ar" onclick="setLang('ar')">ع</button>
+            </div>
+        </div>
+    </div>
+    <div id="installPopup" class="install-popup">
+        <div class="popup-content">
+            <span class="popup-close" id="closePopup">&times;</span>
+            <img src="logo.png" alt="Logo" class="popup-icon">
+            <h2 class="popup-title" data-i18n="popup-title">Installer l'application</h2>
+            <p class="popup-text" data-i18n="popup-text">Installez l'appli sur votre écran d'accueil...</p>
+            <button class="btn-install-now" id="startInstall" data-i18n="popup-btn">Installer maintenant</button>
+        </div>
+    </div>
 <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
     <div class="container">
         <a class="navbar-brand" href="index.html">Antiochian Orthodox</a>
@@ -34,11 +54,6 @@ $imgs = array_filter($p, function($v) { return $v['t'] === 'img'; });
                 <li class="nav-item"><a class="nav-link" href="apropos.html">À propos</a></li>
                 <li class="nav-item"><a class="nav-link" href="InscrivezVous.html">Inscription</a></li>
             </ul>
-            <div class="lang-switcher">
-                <button class="lang-btn active-lang" id="btn-fr" onclick="setLang('fr')">FR</button>
-                <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
-                <button class="lang-btn" id="btn-ar" onclick="setLang('ar')">ع</button>
-            </div>
         </div>
     </div>
 </nav>
