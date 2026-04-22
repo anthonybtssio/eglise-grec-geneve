@@ -2,6 +2,7 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <script>try{document.documentElement.setAttribute('data-theme',localStorage.getItem('theme')||'light');}catch(e){document.documentElement.setAttribute('data-theme','light');}</script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title data-i18n="docs-seo-title">Documents Officiels - Église Antiochian Orthodox Geneva Switzerland</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -130,17 +131,17 @@
             <i class="fas fa-clock"></i>
             <span data-i18n="nav-schedule">Horaire</span>
         </a>
-        <a href="localisation.html" class="tab-item">
-            <i class="fas fa-map-marker-alt"></i>
-            <span data-i18n="nav-location">Lieu</span>
+        <a href="evenement.html" class="tab-item">
+            <i class="fas fa-calendar-alt"></i>
+            <span data-i18n="nav-events">Événements</span>
+        </a>
+        <a href="documents.php" class="tab-item">
+            <i class="fas fa-file-alt"></i>
+            <span data-i18n="nav-docs">Documents</span>
         </a>
         <a href="contact.html" class="tab-item">
             <i class="fas fa-envelope"></i>
             <span data-i18n="nav-contact">Contact</span>
-        </a>
-        <a href="InscrivezVous.html" class="tab-item">
-            <i class="fas fa-user-plus"></i>
-            <span data-i18n="nav-register">Adhésion</span>
         </a>
     </nav>
 

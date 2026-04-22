@@ -9,6 +9,60 @@ api
 3d
 taille logo
 
+Tien : OBJECTIF  
+Intégrer l’API Orthocal dans mon application mobile pour afficher le calendrier orthodoxe du jour.
+
+CONTEXTE  
+Je développe une application mobile. Je veux récupérer et afficher dynamiquement :
+- les saints du jour  
+- les fêtes orthodoxes  
+- les lectures bibliques  
+- les informations de jeûne  
+
+API À UTILISER  
+Endpoint : https://orthocal.info/api/gregorian/{year}/{month}/{day}  
+Exemple : https://orthocal.info/api/gregorian/2026/4/23  
+
+RÉSULTAT ATTENDU  
+Créer un module propre qui :
+1. Fait une requête HTTP GET vers l’API  
+2. Parse la réponse JSON  
+3. Extrait :
+   - saints  
+   - feasts  
+   - fast  
+   - readings  
+4. Affiche les données dans une interface mobile claire  
+
+CONTRAINTES TECHNIQUES  
+- Code propre et structuré  
+- Gestion des erreurs (API indisponible, timeout, JSON invalide)  
+- Mise en cache des données (pour éviter trop d’appels API)  
+- Chargement dynamique selon la date actuelle  
+- Possibilité de changer la date manuellement  
+
+UI / UX  
+- Écran principal = “Aujourd’hui”  
+- Section :
+   - Saints du jour  
+   - Fêtes  
+   - Lectures  
+   - Jeûne  
+- Loading state + message si erreur  
+
+BONUS (si possible)  
+- Ajouter un bouton “Jour suivant / précédent”  
+- Support mode offline (cache local)  
+
+LANGAGE / FRAMEWORK  
+(Utilise mon stack actuel ou propose une implémentation en React Native / Flutter si non précisé)
+
+FORMAT DE RÉPONSE  
+- Code complet prêt à intégrer  
+- Explication rapide  
+- Structure des fichiers
+
+
 a faire : C'est un excellent choix. Avec ce trio, tu couvres tout : la communication (Notifications), la croissance (Partage) et la gestion simplifiée (Cloudinary pour ton compte Admin).
 
 Comme tu es sur VS Code, on va structurer ça proprement. Voici comment mettre en place les deux fonctions les plus rapides pour commencer (le Partage et Cloudinary), car Firebase est un peu plus long à configurer.

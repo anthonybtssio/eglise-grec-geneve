@@ -67,7 +67,18 @@ const i18n = {
         'reg-birthdate': "Date de naissance",
         'reg-privacy': "En vous inscrivant, vous acceptez notre",
         'reg-privacy-link': "politique de confidentialité",
-        'reg-confirm': "Confirmer l'inscription"
+        'reg-confirm': "Confirmer l'inscription",
+        /* Documents */
+        'docs-seo-title': "Documents Officiels - Église Antiochian Orthodox Geneva Switzerland",
+        'docs-title': "Documents de la Paroisse",
+        'docs-subtitle': "Retrouvez ici tous les documents officiels, statuts et formulaires de notre communauté.",
+        'docs-statuts-title': "Statuts de la Paroisse",
+        'docs-statuts-text': "Document officiel décrivant l'organisation et le fonctionnement de l'association.",
+        'docs-adhesion-title': "Formulaire d'Adhésion",
+        'docs-adhesion-text': "Version papier du formulaire d'inscription à la paroisse.",
+        'docs-calendrier-title': "Calendrier Liturgique",
+        'docs-calendrier-text': "Détail des célébrations et événements pour l'année en cours.",
+        'docs-download': "Télécharger"
     },
     en: {
         /* Navigation */
@@ -137,7 +148,18 @@ const i18n = {
         'reg-birthdate': "Date of Birth",
         'reg-privacy': "By registering, you accept our",
         'reg-privacy-link': "privacy policy",
-        'reg-confirm': "Confirm Registration"
+        'reg-confirm': "Confirm Registration",
+        /* Documents */
+        'docs-seo-title': "Official Documents - Antiochian Orthodox Church Geneva Switzerland",
+        'docs-title': "Parish Documents",
+        'docs-subtitle': "Find all official documents, statutes and forms of our community here.",
+        'docs-statuts-title': "Parish Statutes",
+        'docs-statuts-text': "Official document describing the organization and functioning of the association.",
+        'docs-adhesion-title': "Membership Form",
+        'docs-adhesion-text': "Paper version of the parish registration form.",
+        'docs-calendrier-title': "Liturgical Calendar",
+        'docs-calendrier-text': "Details of celebrations and events for the current year.",
+        'docs-download': "Download"
     },
     ar: {
         /* Navigation */
@@ -207,7 +229,18 @@ const i18n = {
         'reg-birthdate': "تاريخ الميلاد",
         'reg-privacy': "بالتسجيل، فإنك تقبل",
         'reg-privacy-link': "سياسة الخصوصية",
-        'reg-confirm': "تأكيد التسجيل"
+        'reg-confirm': "تأكيد التسجيل",
+        /* Documents */
+        'docs-seo-title': "الوثائق الرسمية - الكنيسة الأنطاكية الأرثوذكسية جنيف سويسرا",
+        'docs-title': "وثائق الرعية",
+        'docs-subtitle': "ابحث هنا عن جميع الوثائق الرسمية والأنظمة والنماذج الخاصة بمجتمعنا.",
+        'docs-statuts-title': "نظام الرعية",
+        'docs-statuts-text': "الوثيقة الرسمية التي تصف تنظيم وعمل الجمعية.",
+        'docs-adhesion-title': "نموذج الانتساب",
+        'docs-adhesion-text': "النسخة الورقية من نموذج التسجيل في الرعية.",
+        'docs-calendrier-title': "التقويم الليتورجي",
+        'docs-calendrier-text': "تفاصيل الاحتفالات والفعاليات للسنة الحالية.",
+        'docs-download': "تحميل"
     }
 };
 
@@ -372,6 +405,187 @@ function showIOSInstallGuide() {
     document.body.appendChild(modal);
 }
 
+// --- SPLASH SCREEN (mode app standalone uniquement) ---
+function initSplashScreen(isInStandalone) {
+    if (!isInStandalone) return;
+    if (sessionStorage.getItem('splashDone')) return;
+    const page = window.location.pathname.split('/').pop() || 'index.html';
+    if (page !== 'index.html' && page !== '') return;
+    sessionStorage.setItem('splashDone', '1');
+
+    const splash = document.createElement('div');
+    splash.id = 'splash-screen';
+    splash.innerHTML = `
+        <div class="splash-cross splash-glow"><i class="fas fa-cross"></i></div>
+        <div class="splash-title">Antiochian Orthodox</div>
+        <div class="splash-subtitle">Geneva · Switzerland</div>
+        <div class="splash-dots"><span></span><span></span><span></span></div>`;
+    document.body.prepend(splash);
+    setTimeout(() => { splash.style.opacity = '0'; setTimeout(() => splash.remove(), 700); }, 2300);
+}
+
+// --- CALCUL PROCHAINE MESSE (2e et 4e dimanche du mois) ---
+function getNextMassDate() {
+    const now = new Date();
+    const masses = [];
+    for (let mo = 0; mo <= 2; mo++) {
+        const d = new Date(now.getFullYear(), now.getMonth() + mo, 1);
+        const firstSun = 1 + (7 - d.getDay()) % 7;
+        const s2 = new Date(d.getFullYear(), d.getMonth(), firstSun + 7, 10, 30);
+        const s4 = new Date(d.getFullYear(), d.getMonth(), firstSun + 21, 10, 30);
+        if (s2 > now) masses.push(s2);
+        if (s4 > now) masses.push(s4);
+    }
+    masses.sort((a, b) => a - b);
+    return masses[0] || null;
+}
+
+// --- COUNTDOWN DYNAMIQUE PROCHAINE MESSE (bannière index.html) ---
+function initMassCountdown() {
+    const labelEl = document.getElementById('nmc-label');
+    const dateEl  = document.getElementById('nmc-date');
+    const cntEl   = document.getElementById('nmc-count');
+    if (!dateEl) return;
+
+    function update() {
+        const lang = localStorage.getItem('lang') || 'fr';
+        const next = getNextMassDate();
+        if (!next) return;
+        const diff = next - new Date();
+        const days = Math.floor(diff / 86400000);
+        const hrs  = Math.floor((diff % 86400000) / 3600000);
+        const mins = Math.floor((diff % 3600000) / 60000);
+
+        const locale = lang === 'ar' ? 'ar-DZ' : lang === 'en' ? 'en-GB' : 'fr-FR';
+        const dateStr = next.toLocaleDateString(locale, { weekday:'long', day:'numeric', month:'long' });
+
+        const labels = {
+            fr: { lbl:'Prochaine messe', today:"Aujourd'hui à 10h30 !", tmrw:'Demain à 10h30', d:`Dans ${days} jour${days>1?'s':''}`, h:`Dans ${hrs}h${String(mins).padStart(2,'0')}` },
+            en: { lbl:'Next Mass', today:'Today at 10:30 AM!', tmrw:'Tomorrow at 10:30 AM', d:`In ${days} day${days>1?'s':''}`, h:`In ${hrs}h${String(mins).padStart(2,'0')}` },
+            ar: { lbl:'القداس القادم', today:'اليوم الساعة 10:30!', tmrw:'غداً الساعة 10:30', d:`خلال ${days} يوم`, h:`خلال ${hrs} ساعة` }
+        };
+        const l = labels[lang] || labels.fr;
+        if (labelEl) labelEl.textContent = l.lbl;
+        dateEl.textContent = dateStr;
+        cntEl.textContent = days === 0 ? l.today : days === 1 ? l.tmrw : days < 1 ? l.h : l.d;
+    }
+    update();
+    setInterval(update, 60000);
+}
+
+// --- RAPPEL NOTIFICATION MESSE ---
+async function requestMassNotification() {
+    const lang = localStorage.getItem('lang') || 'fr';
+    const btn = document.getElementById('btn-remind');
+
+    if (!('Notification' in window)) {
+        showToast(lang === 'ar' ? 'الإشعارات غير مدعومة' : lang === 'en' ? 'Notifications not supported' : 'Notifications non supportées');
+        return;
+    }
+    if (Notification.permission === 'denied') {
+        showToast(lang === 'ar' ? 'الإشعارات محجوبة في الإعدادات' : lang === 'en' ? 'Notifications blocked in settings' : 'Notifications bloquées — activez-les dans les paramètres');
+        return;
+    }
+    let perm = Notification.permission;
+    if (perm !== 'granted') perm = await Notification.requestPermission();
+    if (perm !== 'granted') return;
+
+    localStorage.setItem('massReminders', '1');
+    if (btn) { btn.classList.add('notif-active'); if (navigator.vibrate) navigator.vibrate([30, 50, 30]); }
+
+    const next = getNextMassDate();
+    const locale = lang === 'ar' ? 'ar-DZ' : lang === 'en' ? 'en-GB' : 'fr-FR';
+    const ds = next ? next.toLocaleDateString(locale, { weekday:'long', day:'numeric', month:'long' }) : '';
+    const msgs = {
+        fr: { t:'✝️ Rappels activés', b:`Prochaine messe : ${ds} à 10h30` },
+        en: { t:'✝️ Reminders enabled', b:`Next mass: ${ds} at 10:30 AM` },
+        ar: { t:'✝️ تم تفعيل التذكير', b:`القداس القادم: ${ds}` }
+    };
+    const m = msgs[lang] || msgs.fr;
+    new Notification(m.t, { body: m.b, icon: 'logo.png' });
+    checkUpcomingMass();
+}
+
+function checkUpcomingMass() {
+    if (Notification.permission !== 'granted' || !localStorage.getItem('massReminders')) return;
+    const next = getNextMassDate();
+    if (!next) return;
+    const lang = localStorage.getItem('lang') || 'fr';
+    const diff = next - new Date();
+    const hrs = diff / 3600000;
+    const key = `notif-${next.toISOString().split('T')[0]}`;
+    if (hrs <= 20 && hrs > 0 && !sessionStorage.getItem(key)) {
+        sessionStorage.setItem(key, '1');
+        const locale = lang === 'ar' ? 'ar-DZ' : lang === 'en' ? 'en-GB' : 'fr-FR';
+        const ds = next.toLocaleDateString(locale, { weekday:'long', day:'numeric', month:'long' });
+        const msgs = {
+            fr: { t:'⛪ Messe demain', b:`${ds} à 10h30 — Église Sainte-Rita, Bellevue` },
+            en: { t:'⛪ Mass tomorrow', b:`${ds} at 10:30 AM — Saint Rita, Bellevue` },
+            ar: { t:'⛪ القداس غداً', b:`${ds} — كنيسة سانت ريتا، بيلفو` }
+        };
+        const m = msgs[lang] || msgs.fr;
+        new Notification(m.t, { body: m.b, icon: 'logo.png' });
+    }
+}
+
+// --- INDICATEUR OFFLINE ---
+function initOfflineDetection() {
+    function showOffline() {
+        const lang = localStorage.getItem('lang') || 'fr';
+        const msgs = { fr:'📵 Mode hors ligne — contenu depuis le cache', en:'📵 Offline — cached content', ar:'📵 غير متصل — محتوى مخزن' };
+        let b = document.getElementById('offline-banner');
+        if (!b) { b = document.createElement('div'); b.id = 'offline-banner'; document.body.prepend(b); }
+        b.textContent = msgs[lang] || msgs.fr;
+    }
+    function showOnline() {
+        const b = document.getElementById('offline-banner');
+        if (b) b.remove();
+        const lang = localStorage.getItem('lang') || 'fr';
+        showToast({ fr:'✅ Connexion rétablie', en:'✅ Back online', ar:'✅ تم استعادة الاتصال' }[lang] || '✅ Online');
+    }
+    if (!navigator.onLine) showOffline();
+    window.addEventListener('offline', showOffline);
+    window.addEventListener('online', showOnline);
+}
+
+// --- NAVIGATION PAR SWIPE (mode app uniquement) ---
+function initSwipeNavigation(isInStandalone) {
+    if (!isInStandalone) return;
+    const pages = ['index.html','horaire.html','evenement.html','documents.php','contact.html'];
+    const cur = window.location.pathname.split('/').pop() || 'index.html';
+    const idx = pages.indexOf(cur);
+    if (idx === -1) return;
+
+    // Afficher un hint discret au premier usage
+    if (!sessionStorage.getItem('swipeHintShown')) {
+        sessionStorage.setItem('swipeHintShown', '1');
+        const hint = document.createElement('div');
+        hint.className = 'swipe-hint';
+        hint.innerHTML = '← Glissez pour naviguer →';
+        document.body.appendChild(hint);
+        setTimeout(() => hint.remove(), 3200);
+    }
+
+    let sx = 0, sy = 0;
+    document.addEventListener('touchstart', e => { sx = e.touches[0].clientX; sy = e.touches[0].clientY; }, { passive: true });
+    document.addEventListener('touchend', e => {
+        const dx = e.changedTouches[0].clientX - sx;
+        const dy = e.changedTouches[0].clientY - sy;
+        if (Math.abs(dx) < 65 || Math.abs(dy) > Math.abs(dx) * 0.75) return;
+        if (dx < 0 && idx < pages.length - 1) { haptic(); window.location.href = pages[idx + 1]; }
+        else if (dx > 0 && idx > 0) { haptic(); window.location.href = pages[idx - 1]; }
+    }, { passive: true });
+}
+
+// --- VIBRATION HAPTIC ---
+function haptic(pattern) { try { if (navigator.vibrate) navigator.vibrate(pattern || 20); } catch(e){} }
+
+function initHapticFeedback() {
+    document.addEventListener('click', e => {
+        if (e.target.closest('button, .tab-item, .btn-share, .btn-calendar, .btn-gold-action, a.nav-link')) haptic(15);
+    });
+}
+
 // --- EFFET 3D TILT SUR LES CARTES ---
 function init3DCards() {
     document.querySelectorAll('.info-card').forEach(card => {
@@ -392,10 +606,8 @@ function init3DCards() {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-    // Langue
+    // Langue & thème
     applyLang(localStorage.getItem('lang') || 'fr');
-
-    // Thème
     const savedTheme = localStorage.getItem('theme') || 'light';
     document.documentElement.setAttribute('data-theme', savedTheme);
     updateThemeIcon(savedTheme);
@@ -406,25 +618,22 @@ document.addEventListener('DOMContentLoaded', function () {
         if (link.getAttribute('href') === currentPage) link.classList.add('active');
     });
 
+    // Détection plateforme
+    const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent) && !window.MSStream;
+    const isInStandalone = window.matchMedia('(display-mode: standalone)').matches || !!window.navigator.standalone;
+
+    // Splash screen (app mode)
+    initSplashScreen(isInStandalone);
+
     // PWA install button
     const btnInstall = document.getElementById('btnInstall');
-    const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent) && !window.MSStream;
-    const isInStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
-
     if (isInStandalone) {
-        // Déjà installé — cacher le bouton
         if (btnInstall) btnInstall.style.display = 'none';
     } else if (isIOS) {
-        // iOS : afficher le bouton, cliquer ouvre le guide
-        if (btnInstall) {
-            btnInstall.style.display = 'block';
-            btnInstall.addEventListener('click', showIOSInstallGuide);
-        }
+        if (btnInstall) { btnInstall.style.display = 'block'; btnInstall.addEventListener('click', showIOSInstallGuide); }
     } else {
-        // Android / Chrome / Edge : prompt natif
         window.addEventListener('beforeinstallprompt', (e) => {
-            e.preventDefault();
-            window._pwaPrompt = e;
+            e.preventDefault(); window._pwaPrompt = e;
             if (btnInstall) btnInstall.style.display = 'block';
         });
         if (btnInstall) {
@@ -438,16 +647,26 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    // Partage — délégation sur document (capture les boutons dynamiques)
+    // Partage (délégation — fonctionne sur boutons dynamiques)
     document.addEventListener('click', (e) => {
         if (e.target.closest('.btn-share')) shareCurrentPage();
     });
 
-    // Effet 3D cartes
+    // Fonctionnalités mobiles
+    initOfflineDetection();
+    initSwipeNavigation(isInStandalone);
+    initHapticFeedback();
     init3DCards();
+    initMassCountdown();
+
+    // Vérifier si une messe est proche et notifier
+    checkUpcomingMass();
+
+    // Rappel actif ? Remettre l'icône en actif
+    if (localStorage.getItem('massReminders') && document.getElementById('btn-remind')) {
+        document.getElementById('btn-remind').classList.add('notif-active');
+    }
 
     // Service Worker
-    if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('sw.js');
-    }
+    if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js');
 });
