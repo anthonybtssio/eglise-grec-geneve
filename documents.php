@@ -34,13 +34,14 @@
 
             <div class="collapse navbar-collapse" id="navbarMenu">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="index.html">Accueil</a></li>
-                    <li class="nav-item"><a class="nav-link" href="horaire.html">Horaire</a></li>
-                    <li class="nav-item"><a class="nav-link" href="localisation.html">Localisation</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="documents.php">Documents</a></li>
-                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-                    <li class="nav-item"><a class="nav-link" href="apropos.html">À propos</a></li>
-                    <li class="nav-item"><a class="nav-link" href="InscrivezVous.html">Inscription</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html" data-i18n="nav-home">Accueil</a></li>
+                    <li class="nav-item"><a class="nav-link" href="horaire.html" data-i18n="nav-schedule">Horaire</a></li>
+                    <li class="nav-item"><a class="nav-link" href="localisation.html" data-i18n="nav-location">Localisation</a></li>
+                    <li class="nav-item"><a class="nav-link" href="evenement.html" data-i18n="nav-events">Événements</a></li>
+                    <li class="nav-item"><a class="nav-link" href="documents.php" data-i18n="nav-docs">Documents</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html" data-i18n="nav-contact">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="apropos.html" data-i18n="nav-about">À propos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="InscrivezVous.html" data-i18n="nav-register">Inscription</a></li>
                 </ul>
             </div>
         </div>
