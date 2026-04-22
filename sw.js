@@ -1,4 +1,4 @@
-const CACHE_NAME = 'antioch-v3';
+const CACHE_NAME = 'antioch-v4';
 const ASSETS_TO_CACHE = [
   './',
   'index.html',
@@ -8,12 +8,19 @@ const ASSETS_TO_CACHE = [
   'evenement.html',
   'apropos.html',
   'InscrivezVous.html',
-  'documents.php',
+  'mentions-legales.html',
+  'politique-confidentialite.html',
   'style.css',
   'script.js',
   'logo.png',
   'manifest.json',
-  'face.jpg'
+  'events.json',
+  'face.jpg',
+  'resur.jpg',
+  'IMG_7211.JPG',
+  'IMG_7225.PNG',
+  'IMG_7226.PNG',
+  'Resurrection.jpg'
 ];
 
 // Installation

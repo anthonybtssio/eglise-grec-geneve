@@ -2,6 +2,7 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <script>document.documentElement.setAttribute('data-theme',localStorage.getItem('theme')||'light');</script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title data-i18n="events-seo-title">Événements Église Orthodoxe Genève | Vie de la Paroisse</title>
     <meta name="description" content="Restez informé des prochains événements, fêtes et rassemblements de la communauté orthodoxe à Genève et Bellevue.">
@@ -88,7 +89,7 @@
                 <p class="card-text">${event.description}</p>
                 <div class="d-flex flex-column flex-md-row gap-2 justify-content-center mt-3">
                     <a href="https://docs.google.com/forms/d/e/1FAIpQLSf8gE1bgBc8-_N-3RLD3TTRNPzPy0_krkq_gTmKpudUFwrsCQ/viewform" target="_blank" class="btn btn-primary">${registerText[currentLang] || registerText['fr']}</a>
-                    <button class="btn-share" data-i18n="share-btn">Partager <i class="fas fa-share-alt"></i></button>
+                    <button class="btn-share" onclick="shareCurrentPage()" data-i18n="share-btn">Partager <i class="fas fa-share-alt"></i></button>
                 </div>
               </div>
             </div>

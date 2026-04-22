@@ -2,6 +2,7 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <script>document.documentElement.setAttribute('data-theme',localStorage.getItem('theme')||'light');</script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title data-i18n="reg-title">Inscrivez-vous à la paroisse - Église Antiochian Orthodox Geneva Switzerland</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -161,5 +162,6 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="script.js"></script>
+    <script>if('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js');</script>
 </body>
 </html>

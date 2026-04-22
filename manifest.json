@@ -1,12 +1,14 @@
 {
   "name": "Antiochian Orthodox Geneva Switzerland",
   "short_name": "Antioch GVA",
-  "description": "Application officielle de l'église orthodoxe d'Antioche à Genève (Bellevue).",
+  "description": "Application officielle de l'Église Orthodoxe Antiochienne à Genève (Bellevue).",
   "start_url": "index.html",
+  "scope": "./",
   "display": "standalone",
   "orientation": "portrait",
   "background_color": "#050a14",
   "theme_color": "#050a14",
+  "lang": "fr",
   "icons": [
     {
       "src": "logo.png",
@@ -20,5 +22,26 @@
       "type": "image/png",
       "purpose": "maskable"
     }
-  ]
+  ],
+  "shortcuts": [
+    {
+      "name": "Horaires des messes",
+      "short_name": "Horaire",
+      "url": "horaire.html",
+      "icons": [{ "src": "logo.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "Événements",
+      "short_name": "Événements",
+      "url": "evenement.html",
+      "icons": [{ "src": "logo.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "Nous contacter",
+      "short_name": "Contact",
+      "url": "contact.html",
+      "icons": [{ "src": "logo.png", "sizes": "96x96" }]
+    }
+  ],
+  "categories": ["religion", "lifestyle", "social"]
 }
