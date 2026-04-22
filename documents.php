@@ -25,15 +25,6 @@
             </div>
         </div>
     </div>
-    <div id="installPopup" class="install-popup">
-        <div class="popup-content">
-            <span class="popup-close" id="closePopup">&times;</span>
-            <img src="logo.png" alt="Logo" class="popup-icon">
-            <h2 class="popup-title" data-i18n="popup-title">Installer l'application</h2>
-            <p class="popup-text" data-i18n="popup-text">Installez l'appli sur votre écran d'accueil...</p>
-            <button class="btn-install-now" id="startInstall" data-i18n="popup-btn">Installer maintenant</button>
-        </div>
-    </div>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
         <div class="container">
@@ -121,8 +112,6 @@
         </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="script.js"></script>
     <nav class="app-bottom-nav">
         <a href="index.html" class="tab-item">
             <i class="fas fa-home"></i>
@@ -145,6 +134,9 @@
             <span data-i18n="nav-register">Adhésion</span>
         </a>
     </nav>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
 
     <script>
       if ('serviceWorker' in navigator) {
