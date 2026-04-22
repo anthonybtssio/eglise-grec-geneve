@@ -1,0 +1,22 @@
+{
+  "name": "Antiochian Orthodox Geneva Switzerland",
+  "short_name": "Antioch GVA",
+  "description": "Application officielle de l'église orthodoxe d'Antioche à Genève (Bellevue).",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0a121f",
+  "icons": [
+    {
+      "src": "logo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
