@@ -18,20 +18,20 @@ usort($events, function($a, $b) { return strtotime($a['date']) - strtotime($b['d
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
         <div class="container">
-            <a class="navbar-brand" href="index.html">Antiochian Orthodox <span class="d-none d-sm-inline">Geneva</span></a>
+            <a class="navbar-brand" href="/">Antiochian Orthodox <span class="d-none d-sm-inline">Geneva</span></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarMenu">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="index.html">Accueil</a></li>
-                    <li class="nav-item"><a class="nav-link" href="horaire.html">Horaire</a></li>
-                    <li class="nav-item"><a class="nav-link" href="localisation.html">Localisation</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="evenement.php">Événements</a></li>
-                    <li class="nav-item"><a class="nav-link" href="documents.php">Documents</a></li>
-                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-                    <li class="nav-item"><a class="nav-link" href="apropos.html">À propos</a></li>
-                    <li class="nav-item"><a class="nav-link" href="InscrivezVous.html">Inscription</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/">Accueil</a></li>
+                    <li class="nav-item"><a class="nav-link" href="horaire">Horaire</a></li>
+                    <li class="nav-item"><a class="nav-link" href="localisation">Localisation</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="evenement">Événements</a></li>
+                    <li class="nav-item"><a class="nav-link" href="documents">Documents</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="apropos">À propos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="InscrivezVous">Inscription</a></li>
                 </ul>
             </div>
         </div>
@@ -68,7 +68,7 @@ usort($events, function($a, $b) { return strtotime($a['date']) - strtotime($b['d
                             <?php if(!empty($e['link'])): ?>
                                 <a href="<?= $e['link'] ?>" target="_blank" class="btn btn-primary btn-lg px-5 rounded-pill">S'inscrire à l'événement</a>
                             <?php else: ?>
-                                <a href="InscrivezVous.html" class="btn btn-outline-primary btn-lg px-5 rounded-pill">Plus d'infos</a>
+                                <a href="InscrivezVous" class="btn btn-outline-primary btn-lg px-5 rounded-pill">Plus d'infos</a>
                             <?php endif; ?>
                         </div>
                     </div>
@@ -93,8 +93,8 @@ usort($events, function($a, $b) { return strtotime($a['date']) - strtotime($b['d
                 </div>
                 <div class="col-12 mb-4">
                     <p class="mb-1">
-                        <a href="mentions-legales.html">Mentions légales</a> | 
-                        <a href="politique-confidentialite.html">Politique de confidentialité</a>
+                        <a href="mentions-legales">Mentions légales</a> | 
+                        <a href="politique-confidentialite">Politique de confidentialité</a>
                     </p>
                     <p class="small text-white-50">&copy; 2025 Tous droits réservés</p>
                 </div>

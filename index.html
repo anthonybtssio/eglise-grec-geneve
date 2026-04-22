@@ -3,10 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Église Antiochian Orthodox Geneva Switzerland - Église orthodoxe grecque Genève Bellevue</title>
-    <meta name="description" content="Bienvenue à l'Église Antiochian Orthodox Geneva Switzerland (Église orthodoxe grecque). Située à Bellevue, Genève, notre paroisse accueille la communauté orthodoxe de Suisse. Horaires des messes, événements et localisation.">
+    <title>Église Orthodoxe Genève & Bellevue | Antiochian Orthodox Church</title>
+    <meta name="description" content="Bienvenue à l'Église orthodoxe grecque à Genève (Bellevue). Découvrez nos horaires de messes, événements et rejoignez notre communauté orthodoxe antiochienne.">
     <meta name="keywords" content="Église orthodoxe grecque Genève Bellevue, Antiochian Orthodox Church Geneva Switzerland, Greek Orthodox Church Geneva, Église orthodoxe Suisse, AOAS Genève, Orthodox Church Bellevue">
-    
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "PlaceOfWorship",
+      "name": "Église Antiochian Orthodox Geneva Switzerland",
+      "alternateName": "Église orthodoxe grecque Genève Bellevue",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Chemin de la Chênaie 145C",
+        "addressLocality": "Bellevue",
+        "addressRegion": "Geneva",
+        "postalCode": "1293",
+        "addressCountry": "Switzerland"
+      },
+      "telephone": "+41 79 291 34 72",
+      "url": "https://antiochian-orthodox-geneva.ch/",
+      "image": "face.jpg"
+    }
+    </script>
+
     <!-- Open Graph (pour Facebook/Instagram/WhatsApp) -->
     <meta property="og:title" content="Église Antiochian Orthodox Geneva Switzerland - Bellevue">
     <meta property="og:description" content="Église orthodoxe grecque à Genève (Bellevue). Horaires des messes et vie de la communauté.">
@@ -31,7 +52,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarMenu">
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link active" href="index.html">Accueil</a></li>
+                <li class="nav-item"><a class="nav-link" href="index.html">Accueil</a></li>
                 <li class="nav-item"><a class="nav-link" href="horaire.html">Horaire</a></li>
                 <li class="nav-item"><a class="nav-link" href="localisation.html">Localisation</a></li>
                 <li class="nav-item"><a class="nav-link" href="evenement.html">Événements</a></li>
@@ -40,6 +61,11 @@
                 <li class="nav-item"><a class="nav-link" href="apropos.html">À propos</a></li>
                 <li class="nav-item"><a class="nav-link" href="InscrivezVous.html">Inscription</a></li>
             </ul>
+            <div class="lang-switcher">
+                <button class="lang-btn active-lang" id="btn-fr" onclick="setLang('fr')">FR</button>
+                <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+                <button class="lang-btn" id="btn-ar" onclick="setLang('ar')">ع</button>
+            </div>
         </div>
     </div>
 </nav>
@@ -80,40 +106,42 @@
 
     <!-- Bloc infos rapides -->
     <div class="container my-5 py-5">
-        <h2 class="text-center section-title">Bienvenue à l'Église Antiochienne</h2>
+        <h2 class="text-center section-title" id="welcome-title">Bienvenue à l'Église Antiochienne</h2>
         <div class="row g-4 text-center">
             <div class="col-12 col-md-4">
                 <div class="info-card">
-                    <h4><i class="fas fa-dove mb-3 d-block"></i> Horaires des messes</h4>
-                    <p class="mb-0">2ème Dimanche du mois : 10h30<br>4ème Dimanche du mois : 10h30</p>
+                    <h4><i class="fas fa-dove mb-3 d-block"></i> <span id="card-schedule-title">Horaires des messes</span></h4>
+                    <p class="mb-0" id="card-schedule-text">2ème Dimanche du mois : 10h30<br>4ème Dimanche du mois : 10h30</p>
                 </div>
             </div>
             <div class="col-12 col-md-4">
                 <div class="info-card">
-                    <h4><i class="fas fa-map-marker-alt mb-3 d-block"></i> Localisation</h4>
-                    <p class="mb-0">Chemin de la Chênaie 145C,<br>1293 Bellevue, Genève</p>
+                    <h4><i class="fas fa-map-marker-alt mb-3 d-block"></i> <span id="card-location-title">Localisation</span></h4>
+                    <p class="mb-0" id="card-location-text">Chemin de la Chênaie 145C,<br>1293 Bellevue, Genève</p>
                 </div>
             </div>
             <div class="col-12 col-md-4">
                 <div class="info-card">
-                    <h4><i class="fas fa-calendar-alt mb-3 d-block"></i> Prochain événement</h4>
-                    <p class="mb-0">Déjeuner de manakish - 14 septembre 2025<br>10h30 à Bellevue</p>
+                    <h4><i class="fas fa-calendar-alt mb-3 d-block"></i> <span id="card-event-title">Prochain événement</span></h4>
+                    <p class="mb-0" id="card-event-text">Déjeuner de manakish - 14 septembre 2025<br>10h30 à Bellevue</p>
                 </div>
             </div>
         </div>
+    </div>
+
     <!-- Bloc SEO / Présentation -->
     <div class="bg-light py-5">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-10 text-center">
-                    <h2 class="mb-4">Votre Église Orthodoxe à Genève Bellevue</h2>
-                    <p class="lead">
-                        Bienvenue à la paroisse de l'<strong>Église Antiochian Orthodox Geneva Switzerland</strong>. 
+                    <h2 class="mb-4" id="seo-title">Votre Église Orthodoxe à Genève Bellevue</h2>
+                    <p class="lead" id="seo-p1">
+                        Bienvenue à la paroisse de l'<strong>Église Antiochian Orthodox Geneva Switzerland</strong>.
                         Située à Bellevue, notre communauté représente l'<strong>Église orthodoxe grecque</strong> au sein du canton de Genève et de la Suisse.
                     </p>
-                    <p>
-                        Que vous cherchiez la <strong>Greek Orthodox Church in Geneva</strong> ou l'<strong>Église orthodoxe Antiochian</strong>, 
-                        nous vous accueillons pour les offices et événements communautaires. Notre paroisse est un lieu de prière, 
+                    <p id="seo-p2">
+                        Que vous cherchiez la <strong>Greek Orthodox Church in Geneva</strong> ou l'<strong>Église orthodoxe Antiochian</strong>,
+                        nous vous accueillons pour les offices et événements communautaires. Notre paroisse est un lieu de prière,
                         de rassemblement et de partage pour tous les fidèles orthodoxes de la région de Bellevue et de ses environs.
                     </p>
                 </div>
@@ -129,17 +157,14 @@
             <div class="col-12 mb-4">
                 <h3 class="text-white mb-3">Antiochian Orthodox Geneva Switzerland</h3>
                 <div class="social-icons">
-                    <a href="https://m.facebook.com/share/p/16q4RCaz4V/?mibextid=wwXIfr&wtsid=rdr_0NXitAsiyx5FxvxpR" target="_blank">
-                        <i class="fab fa-facebook"></i>
-                    </a>
-                    <a href="https://www.instagram.com/antioch_geneve?igsh=ZjM0MW9qY2VpeDNh" target="_blank">
-                        <i class="fab fa-instagram"></i>
-                    </a>
+                    <a href="https://m.facebook.com/share/p/16q4RCaz4V/?mibextid=wwXIfr&wtsid=rdr_0NXitAsiyx5FxvxpR" target="_blank"><i class="fab fa-facebook"></i></a>
+                    <a href="https://www.instagram.com/antioch_geneve?igsh=ZjM0MW9qY2VpeDNh" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.tiktok.com/@user1045672728666" target="_blank"><i class="fab fa-tiktok"></i></a>
                 </div>
             </div>
             <div class="col-12 mb-4">
                 <p class="mb-1">
-                    <a href="mentions-legales.html">Mentions légales</a> | 
+                    <a href="mentions-legales.html">Mentions légales</a> |
                     <a href="politique-confidentialite.html">Politique de confidentialité</a>
                 </p>
                 <p class="small text-white-50">&copy; 2025 Tous droits réservés</p>
@@ -151,6 +176,67 @@
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="script.js"></script>
+
+<script>
+const i18n = {
+    fr: {
+        'welcome-title':       "Bienvenue à l'Église Antiochienne",
+        'card-schedule-title': "Horaires des messes",
+        'card-schedule-text':  "2ème Dimanche du mois : 10h30<br>4ème Dimanche du mois : 10h30",
+        'card-location-title': "Localisation",
+        'card-location-text':  "Chemin de la Chênaie 145C,<br>1293 Bellevue, Genève",
+        'card-event-title':    "Prochain événement",
+        'card-event-text':     "Déjeuner de manakish - 14 septembre 2025<br>10h30 à Bellevue",
+        'seo-title':           "Votre Église Orthodoxe à Genève Bellevue",
+        'seo-p1':              "Bienvenue à la paroisse de l'<strong>Église Antiochian Orthodox Geneva Switzerland</strong>. Située à Bellevue, notre communauté représente l'<strong>Église orthodoxe grecque</strong> au sein du canton de Genève et de la Suisse.",
+        'seo-p2':              "Que vous cherchiez la <strong>Greek Orthodox Church in Geneva</strong> ou l'<strong>Église orthodoxe Antiochian</strong>, nous vous accueillons pour les offices et événements communautaires. Notre paroisse est un lieu de prière, de rassemblement et de partage pour tous les fidèles orthodoxes de la région de Bellevue et de ses environs."
+    },
+    en: {
+        'welcome-title':       "Welcome to the Antiochian Church",
+        'card-schedule-title': "Mass Schedule",
+        'card-schedule-text':  "2nd Sunday of the month: 10:30 AM<br>4th Sunday of the month: 10:30 AM",
+        'card-location-title': "Location",
+        'card-location-text':  "Chemin de la Chênaie 145C,<br>1293 Bellevue, Geneva",
+        'card-event-title':    "Next Event",
+        'card-event-text':     "Manakish Lunch – September 14, 2025<br>10:30 AM in Bellevue",
+        'seo-title':           "Your Orthodox Church in Geneva Bellevue",
+        'seo-p1':              "Welcome to the parish of the <strong>Antiochian Orthodox Church Geneva Switzerland</strong>. Located in Bellevue, our community represents the <strong>Orthodox Church</strong> in the canton of Geneva and Switzerland.",
+        'seo-p2':              "Whether you are looking for the <strong>Greek Orthodox Church in Geneva</strong> or the <strong>Antiochian Orthodox Church</strong>, we welcome you to our services and community events. Our parish is a place of prayer, gathering and sharing for all Orthodox faithful in the Bellevue area."
+    },
+    ar: {
+        'welcome-title':       "مرحباً بكم في الكنيسة الأنطاكية",
+        'card-schedule-title': "مواقيت القداسات",
+        'card-schedule-text':  "الأحد الثاني من الشهر: 10:30<br>الأحد الرابع من الشهر: 10:30",
+        'card-location-title': "الموقع",
+        'card-location-text':  "Chemin de la Chênaie 145C،<br>1293 Bellevue، جنيف",
+        'card-event-title':    "الحدث القادم",
+        'card-event-text':     "غداء المناقيش – 14 سبتمبر 2025<br>10:30 في Bellevue",
+        'seo-title':           "كنيستكم الأرثوذكسية في جنيف بيلفو",
+        'seo-p1':              "أهلاً بكم في رعية <strong>كنيسة أنطاكية الأرثوذكسية في جنيف سويسرا</strong>. تقع في بيلفو، تمثل جماعتنا الكنيسة الأرثوذكسية في كانتون جنيف وسويسرا.",
+        'seo-p2':              "سواء كنتم تبحثون عن <strong>الكنيسة الأرثوذكسية اليونانية في جنيف</strong> أو <strong>الكنيسة الأنطاكية الأرثوذكسية</strong>، نرحب بكم في خدماتنا وفعالياتنا الجماعية. رعيتنا مكان للصلاة والتجمع والمشاركة لجميع المؤمنين الأرثوذكس في منطقة بيلفو."
+    }
+};
+
+function setLang(lang) {
+    const t = i18n[lang];
+    if (!t) return;
+    Object.keys(t).forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.innerHTML = t[id];
+    });
+    document.documentElement.lang = lang;
+    document.documentElement.dir = (lang === 'ar') ? 'rtl' : 'ltr';
+    document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active-lang'));
+    const btn = document.getElementById('btn-' + lang);
+    if (btn) btn.classList.add('active-lang');
+    localStorage.setItem('lang', lang);
+}
+
+(function() {
+    const saved = localStorage.getItem('lang');
+    if (saved && i18n[saved]) setLang(saved);
+})();
+</script>
 
 </body>
 </html>

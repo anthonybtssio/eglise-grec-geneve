@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>S'inscrire - Église Antiochian Orthodox Geneva Switzerland</title>
+    <title>Inscription - Église Antiochian Orthodox Geneva Switzerland</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="style.css">
@@ -13,7 +13,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
         <div class="container">
             <a class="navbar-brand" href="index.html">Antiochian Orthodox <span class="d-none d-sm-inline">Geneva</span></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu" aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarMenu">
@@ -27,59 +27,69 @@
                     <li class="nav-item"><a class="nav-link" href="apropos.html">À propos</a></li>
                     <li class="nav-item"><a class="nav-link active" href="InscrivezVous.html">Inscription</a></li>
                 </ul>
+                <div class="lang-switcher">
+                    <button class="lang-btn active-lang" id="btn-fr" onclick="setLang('fr')">FR</button>
+                    <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+                    <button class="lang-btn" id="btn-ar" onclick="setLang('ar')">ع</button>
+                </div>
             </div>
         </div>
     </nav>
 
     <main class="container py-5">
-        <h1 class="text-center section-title">Inscription Communautaire</h1>
-        
+        <h1 class="text-center section-title">Inscrivez-vous à la paroisse</h1>
+
         <div class="row justify-content-center">
-            <div class="col-12 col-lg-10">
-                <div class="card shadow-lg border-0 rounded-4 overflow-hidden">
-                    <div class="card-header bg-primary text-white text-center py-4 border-0">
-                        <h3 class="mb-1 text-white"><i class="fas fa-envelope-open-text me-2"></i>Restez Connecté</h3>
-                        <p class="mb-0 text-white-50">Recevez les annonces d'événements et les bulletins de la paroisse.</p>
-                    </div>
+            <div class="col-12 col-lg-8">
+                <div class="registration-container p-4 p-md-5">
+                    <h3 class="mb-4 text-center">Formulaire d'adhésion</h3>
+                    <p class="text-center text-muted mb-5 small">Rejoignez notre communauté et restez informé des activités de la paroisse.</p>
                     
-                    <div class="card-body p-0">
-                        <div class="p-4 p-md-5">
-                            <p class="lead mb-4 text-center">Veuillez remplir le formulaire ci-dessous pour créer votre compte.</p>
-                            
-                            <form action="inscription.php" method="POST" class="mx-auto" style="max-width: 500px;">
-                                <div class="row">
-                                    <div class="col-md-6 mb-3">
-                                        <label for="prenom" class="form-label">Prénom</label>
-                                        <input type="text" class="form-control" id="prenom" name="prenom" placeholder="Ex: Jean" required>
-                                    </div>
-                                    <div class="col-md-6 mb-3">
-                                        <label for="nom" class="form-label">Nom</label>
-                                        <input type="text" class="form-control" id="nom" name="nom" placeholder="Ex: Dupont" required>
-                                    </div>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="email" class="form-label">Adresse Email</label>
-                                    <input type="email" class="form-control" id="email" name="email" placeholder="exemple@mail.com" required>
-                                </div>
-                                <div class="mb-4">
-                                    <label for="telephone" class="form-label">Numéro de Téléphone</label>
-                                    <input type="tel" class="form-control" id="telephone" name="telephone" placeholder="Ex: 079 123 45 67" required>
-                                </div>
-                                <div class="d-grid">
-                                    <button type="submit" class="btn btn-primary btn-lg rounded-pill py-3">
-                                        <i class="fas fa-paper-plane me-2"></i>Envoyer l'inscription
-                                    </button>
-                                </div>
-                            </form>
+                    <form action="inscription.php" method="POST">
+                        <div class="row g-4">
+                            <!-- Nom complet -->
+                            <div class="col-md-6">
+                                <label for="nom" class="form-label">Nom de famille</label>
+                                <input type="text" class="form-control" id="nom" name="nom" placeholder="Votre nom" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="prenom" class="form-label">Prénom</label>
+                                <input type="text" class="form-control" id="prenom" name="prenom" placeholder="Votre prénom" required>
+                            </div>
+
+                            <!-- Email et téléphone -->
+                            <div class="col-md-6">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="email" name="email" placeholder="votre@email.com" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="telephone" class="form-label">Téléphone</label>
+                                <input type="tel" class="form-control" id="telephone" name="telephone" placeholder="+41 00 000 00 00" required>
+                            </div>
+
+                            <!-- Adresse -->
+                            <div class="col-12">
+                                <label for="adresse" class="form-label">Adresse complète</label>
+                                <input type="text" class="form-control" id="adresse" name="adresse" placeholder="Rue, numéro, code postal et ville" required>
+                            </div>
+
+                            <!-- Nombre de personnes -->
+                            <div class="col-md-6">
+                                <label for="nb_famille" class="form-label">Nombre de personnes dans la famille</label>
+                                <input type="number" class="form-control" id="nb_famille" name="nb_famille" min="1" value="1" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="date_naissance" class="form-label">Date de naissance (référent)</label>
+                                <input type="date" class="form-control" id="date_naissance" name="date_naissance" required>
+                            </div>
+
+                            <!-- Bouton d'inscription -->
+                            <div class="col-12 text-center mt-5">
+                                <button type="submit" class="btn btn-gold-action btn-lg px-5">Confirmer l'inscription</button>
+                                <p class="mt-3 small text-muted">En vous inscrivant, vous acceptez notre <a href="politique-confidentialite.html" class="text-gold">politique de confidentialité</a>.</p>
+                            </div>
                         </div>
-                    </div>
-                    
-                    <div class="card-footer bg-light p-4 text-center border-0">
-                        <p class="text-muted small mb-0">
-                            Vos informations sont stockées en toute sécurité. Vous pouvez vous désinscrire à tout moment. 
-                            Consultez notre <a href="politique-confidentialite.html" class="text-decoration-none text-primary">Politique de Confidentialité</a>.
-                        </p>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -91,12 +101,9 @@
                 <div class="col-12 mb-4">
                     <h3 class="text-white mb-3">Antiochian Orthodox Geneva Switzerland</h3>
                     <div class="social-icons">
-                        <a href="https://m.facebook.com/share/p/16q4RCaz4V/?mibextid=wwXIfr&wtsid=rdr_0NXitAsiyx5FxvxpR" target="_blank">
-                            <i class="fab fa-facebook"></i>
-                        </a>
-                        <a href="https://www.instagram.com/antioch_geneve?igsh=ZjM0MW9qY2VpeDNh" target="_blank">
-                            <i class="fab fa-instagram"></i>
-                        </a>
+                        <a href="https://m.facebook.com/share/p/16q4RCaz4V/?mibextid=wwXIfr&wtsid=rdr_0NXitAsiyx5FxvxpR" target="_blank"><i class="fab fa-facebook"></i></a>
+                        <a href="https://www.instagram.com/antioch_geneve?igsh=ZjM0MW9qY2VpeDNh" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.tiktok.com/@user1045672728666" target="_blank"><i class="fab fa-tiktok"></i></a>
                     </div>
                 </div>
                 <div class="col-12 mb-4">
@@ -111,5 +118,6 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>

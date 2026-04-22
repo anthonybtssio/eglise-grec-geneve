@@ -17,12 +17,10 @@ $imgs = array_filter($p, function($v) { return $v['t'] === 'img'; });
         .card { border: none; background: transparent; }
     </style>
 </head>
-<body>
-
 <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
     <div class="container">
         <a class="navbar-brand" href="index.html">Antiochian Orthodox</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu" aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarMenu">
@@ -31,10 +29,16 @@ $imgs = array_filter($p, function($v) { return $v['t'] === 'img'; });
                 <li class="nav-item"><a class="nav-link" href="horaire.html">Horaire</a></li>
                 <li class="nav-item"><a class="nav-link" href="localisation.html">Localisation</a></li>
                 <li class="nav-item"><a class="nav-link" href="evenement.html">Événements</a></li>
-                <li class="nav-item"><a class="nav-link active" href="galerie.php">Galerie</a></li>
                 <li class="nav-item"><a class="nav-link" href="documents.php">Documents</a></li>
                 <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                <li class="nav-item"><a class="nav-link" href="apropos.html">À propos</a></li>
+                <li class="nav-item"><a class="nav-link" href="InscrivezVous.html">Inscription</a></li>
             </ul>
+            <div class="lang-switcher">
+                <button class="lang-btn active-lang" id="btn-fr" onclick="setLang('fr')">FR</button>
+                <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+                <button class="lang-btn" id="btn-ar" onclick="setLang('ar')">ع</button>
+            </div>
         </div>
     </div>
 </nav>

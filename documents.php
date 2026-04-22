@@ -34,7 +34,14 @@ $docs = array_filter($p, function($v) { return $v['t'] === 'doc'; });
                 <li class="nav-item"><a class="nav-link" href="evenement.html">Événements</a></li>
                 <li class="nav-item"><a class="nav-link active" href="documents.php">Documents</a></li>
                 <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                <li class="nav-item"><a class="nav-link" href="apropos.html">À propos</a></li>
+                <li class="nav-item"><a class="nav-link" href="InscrivezVous.html">Inscription</a></li>
             </ul>
+            <div class="lang-switcher">
+                <button class="lang-btn active-lang" id="btn-fr" onclick="setLang('fr')">FR</button>
+                <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+                <button class="lang-btn" id="btn-ar" onclick="setLang('ar')">ع</button>
+            </div>
         </div>
     </div>
 </nav>
