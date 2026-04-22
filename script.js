@@ -1,50 +1,44 @@
 // Initialisation au chargement
 document.addEventListener("DOMContentLoaded", function() {
-    // 1. Détection du lien actif dans le menu
+    // 1. Détection du lien actif
     const currentPath = window.location.pathname.split("/").pop() || "index.html";
-    const navLinks = document.querySelectorAll(".nav-link");
-    
-    navLinks.forEach(link => {
-        const href = link.getAttribute("href");
-        if (href === currentPath) {
-            link.classList.add("active");
-        } else {
-            link.classList.remove("active");
-        }
+    document.querySelectorAll(".nav-link").forEach(link => {
+        if (link.getAttribute("href") === currentPath) link.classList.add("active");
     });
 
-    // 2. Logique d'installation PWA
+    // 2. Logique PWA (Android & iOS)
     let deferredPrompt;
-    const installContainer = document.getElementById('installContainer');
     const btnInstall = document.getElementById('btnInstall');
 
-    window.addEventListener('beforeinstallprompt', (e) => {
-        // Empêcher Chrome d'afficher la bannière automatique
-        e.preventDefault();
-        // Garder l'événement pour plus tard
-        deferredPrompt = e;
-        // Afficher notre propre bouton
-        if (installContainer) installContainer.style.display = 'block';
-    });
+    // Détection iOS
+    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+    const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
 
-    if (btnInstall) {
-        btnInstall.addEventListener('click', async () => {
-            if (deferredPrompt) {
-                // Afficher la boîte de dialogue d'installation
-                deferredPrompt.prompt();
-                const { outcome } = await deferredPrompt.userChoice;
-                // On cache le bouton après le choix
-                deferredPrompt = null;
-                if (installContainer) installContainer.style.display = 'none';
-            }
+    // Afficher le bouton sur iOS s'il n'est pas déjà installé
+    if (isIOS && !isStandalone && btnInstall) {
+        btnInstall.style.display = 'block';
+        btnInstall.addEventListener('click', () => {
+            alert("Pour installer l'appli sur votre iPhone :\n\n1. Appuyez sur l'icône 'Partager' en bas de votre écran (le carré avec une flèche).\n2. Faites défiler et choisissez 'Sur l'écran d'accueil'.");
         });
     }
 
-    // Cacher le bouton si l'app est déjà installée
-    window.addEventListener('appinstalled', () => {
-        if (installContainer) installContainer.style.display = 'none';
-        deferredPrompt = null;
+    // Logique pour Android / Chrome
+    window.addEventListener('beforeinstallprompt', (e) => {
+        e.preventDefault();
+        deferredPrompt = e;
+        if (btnInstall) btnInstall.style.display = 'block';
     });
+
+    if (btnInstall && !isIOS) {
+        btnInstall.addEventListener('click', async () => {
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                const { outcome } = await deferredPrompt.userChoice;
+                if (outcome === 'accepted') btnInstall.style.display = 'none';
+                deferredPrompt = null;
+            }
+        });
+    }
 });
 
 function setLang(lang) {
