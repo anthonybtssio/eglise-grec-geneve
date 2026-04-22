@@ -166,4 +166,13 @@ document.addEventListener("DOMContentLoaded", function() {
             alert(i18n[localStorage.getItem('lang') || 'fr']['popup-ios'].replace(/<[^>]*>?/gm, ''));
         }
     });
+
+    // Update bottom nav active state
+    const currentPath = window.location.pathname.split("/").pop() || "index.html";
+    document.querySelectorAll('.app-bottom-nav .tab-item').forEach(link => {
+        const href = link.getAttribute('href');
+        if (href === currentPath) {
+            link.classList.add('active');
+        }
+    });
 });

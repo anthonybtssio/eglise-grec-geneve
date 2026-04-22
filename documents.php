@@ -123,6 +123,29 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="script.js"></script>
+    <nav class="app-bottom-nav">
+        <a href="index.html" class="tab-item">
+            <i class="fas fa-home"></i>
+            <span data-i18n="nav-home">Accueil</span>
+        </a>
+        <a href="horaire.html" class="tab-item">
+            <i class="fas fa-clock"></i>
+            <span data-i18n="nav-schedule">Horaire</span>
+        </a>
+        <a href="localisation.html" class="tab-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <span data-i18n="nav-location">Lieu</span>
+        </a>
+        <a href="contact.html" class="tab-item">
+            <i class="fas fa-envelope"></i>
+            <span data-i18n="nav-contact">Contact</span>
+        </a>
+        <a href="InscrivezVous.html" class="tab-item">
+            <i class="fas fa-user-plus"></i>
+            <span data-i18n="nav-register">Adhésion</span>
+        </a>
+    </nav>
+
     <script>
       if ('serviceWorker' in navigator) {
         navigator.serviceWorker.register('sw.js');
