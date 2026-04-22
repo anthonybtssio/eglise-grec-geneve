@@ -5,7 +5,7 @@
     --gold-color: #D4AF37;
     --gold-bright: #FFD700;
     --ivory-bg: #fdfaf5;
-    --transition-3d: all 0.6s cubic-bezier(0.2, 1, 0.3, 1);
+    --transition-3d: all 0.2s ease; /* Transition quasi-instantanée */
 }
 
 /* ===== Curseur Royal ===== */
@@ -13,18 +13,18 @@ body, a, button, .nav-link, .btn {
     cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="%23D4AF37"><path d="M11 2h2v7h7v2h-7v11h-2v-11h-7v-2h7V2z"/></svg>'), auto !important;
 }
 
-/* Animation d'entrée de page */
-@keyframes fadeInPage {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+/* Pour éviter le flash blanc entre les pages */
+html {
+    background-color: #ffffff;
 }
 
 body {
     background-color: #ffffff;
     font-family: 'Montserrat', sans-serif;
-    perspective: 1200px;
     overflow-x: hidden;
-    animation: fadeInPage 0.8s ease-out;
+    margin: 0;
+    padding: 0;
+    opacity: 1 !important; /* Force l'opacité à 1 immédiatement */
 }
 
 /* ===== Menu de Navigation ===== */
@@ -57,7 +57,7 @@ body {
     width: 0;
     height: 1px;
     background: var(--gold-color);
-    transition: 0.3s;
+    transition: 0.2s;
     transform: translateX(-50%);
 }
 
@@ -67,16 +67,9 @@ body {
 
 .nav-link:hover {
     color: var(--gold-color) !important;
-    transform: translateY(-2px);
 }
 
-/* ===== EFFET 3D ADOUCI & FLOTTANT ===== */
-@keyframes floating {
-    0% { transform: translateZ(20px) translateY(0px); }
-    50% { transform: translateZ(25px) translateY(-5px); }
-    100% { transform: translateZ(20px) translateY(0px); }
-}
-
+/* ===== Effet 3D Très Léger ===== */
 .info-card {
     background: #fff;
     border-radius: 15px;
@@ -84,40 +77,29 @@ body {
     border: 1px solid rgba(212, 175, 55, 0.1);
     position: relative;
     transition: var(--transition-3d);
-    transform-style: preserve-3d;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.03);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.03);
 }
 
 .info-card:hover {
-    transform: rotateX(7deg) rotateY(-7deg) translateY(-10px);
+    transform: translateY(-5px);
     border-color: var(--gold-color);
-    box-shadow: 25px 25px 50px rgba(0,0,0,0.08);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.08);
 }
 
 .info-card i {
     color: var(--gold-color);
     font-size: 3rem;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
     display: inline-block;
-    transform: translateZ(20px);
-    animation: floating 4s ease-in-out infinite; /* L'icône flotte doucement */
+    transition: var(--transition-3d);
 }
 
 .info-card h4 {
     font-family: 'Playfair Display', serif;
-    transform: translateZ(15px);
 }
 
-/* Animation de révélation au scroll */
-.reveal {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.8s ease-out;
-}
-
-.reveal.active {
-    opacity: 1;
-    transform: translateY(0);
+.info-card p {
+    color: #666;
 }
 
 /* ===== Formulaires Ivoire & Or ===== */
@@ -130,8 +112,7 @@ body {
 
 .form-control:focus {
     border-color: var(--gold-color);
-    box-shadow: 0 0 15px rgba(212, 175, 55, 0.1);
-    transform: scale(1.01);
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.1);
 }
 
 .btn-gold-action, .btn-dark {
@@ -141,15 +122,12 @@ body {
     font-weight: 800 !important;
     text-transform: uppercase;
     padding: 1.2rem 3rem !important;
-    transition: all 0.4s ease;
-    box-shadow: 0 10px 20px rgba(212, 175, 55, 0.15);
+    transition: all 0.2s ease;
 }
 
 .btn-gold-action:hover, .btn-dark:hover {
     background: var(--primary-color) !important;
     color: var(--gold-color) !important;
-    transform: translateY(-5px);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
 }
 
 /* ===== Boutons de Traduction ===== */
@@ -161,28 +139,25 @@ body {
     width: 32px; height: 32px;
     font-size: 0.7rem; font-weight: 700;
     display: flex; align-items: center; justify-content: center;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
 }
 
 .lang-btn:hover, .lang-btn.active-lang {
     background: var(--gold-color);
     color: var(--primary-color) !important;
-    transform: scale(1.1);
 }
 
 /* Carrousel */
-.carousel-item img { height: 600px; object-fit: contain; background: #000; transition: transform 0.5s ease; }
-.carousel:hover .carousel-item img { transform: scale(1.02); }
+.carousel-item img { height: 600px; object-fit: contain; background: #000; }
 
 @media (max-width: 768px) {
-    .navbar { min-height: 70px; }
+    .navbar { min-height: 75px; }
     .carousel-item img { height: 350px; }
-    .info-card:hover { transform: translateY(-5px); }
 }
 
 footer {
     background: var(--primary-color) !important;
-    padding: 5rem 0 3rem;
+    padding: 4rem 0 3rem;
     border-top: 4px solid var(--gold-color);
 }
 
@@ -190,11 +165,10 @@ footer {
     font-size: 1.5rem;
     margin: 0 12px;
     color: var(--gold-color) !important;
-    transition: 0.3s;
+    transition: 0.2s;
     display: inline-block;
 }
 
 .social-icons a:hover {
-    transform: translateY(-10px) scale(1.2);
     color: white !important;
 }
