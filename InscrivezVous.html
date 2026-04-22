@@ -3,16 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-i18n="reg-seo-title">Inscription - Église Antiochian Orthodox Geneva Switzerland</title>
+    <title data-i18n="reg-title">Inscrivez-vous à la paroisse - Église Antiochian Orthodox Geneva Switzerland</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="Antioch GVA">
     <link rel="apple-touch-icon" href="logo.png">
-    <link rel="apple-touch-startup-image" href="logo.png">
-    <link rel="manifest" href="manifest.json">
 </head>
 <body>
     <div class="utility-bar">
@@ -25,19 +24,20 @@
             </div>
         </div>
     </div>
+
     <div id="installPopup" class="install-popup">
         <div class="popup-content">
             <span class="popup-close" id="closePopup">&times;</span>
             <img src="logo.png" alt="Logo" class="popup-icon">
             <h2 class="popup-title" data-i18n="popup-title">Installer l'application</h2>
             <p class="popup-text" data-i18n="popup-text">Installez l'appli sur votre écran d'accueil...</p>
-            <button class="btn-install-now" id="startInstall" data-i18n="popup-btn">Installer maintenant</button>
+            <button class="btn-install-now" id="startInstall" data-i18n="popup-btn">Démarrer l'installation</button>
         </div>
     </div>
-    <!-- Navbar -->
+
     <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
         <div class="container">
-            <a class="navbar-brand" href="index.html" data-i18n="nav-brand">Antiochian Orthodox <span class="d-none d-sm-inline">Geneva</span></a>
+            <a class="navbar-brand" href="index.html">Antiochian Orthodox <span class="d-none d-sm-inline">Geneva</span></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -50,7 +50,7 @@
                     <li class="nav-item"><a class="nav-link" href="documents.php" data-i18n="nav-docs">Documents</a></li>
                     <li class="nav-item"><a class="nav-link" href="contact.html" data-i18n="nav-contact">Contact</a></li>
                     <li class="nav-item"><a class="nav-link" href="apropos.html" data-i18n="nav-about">À propos</a></li>
-                    <li class="nav-item"><a class="nav-link" href="InscrivezVous.html" data-i18n="nav-register">Inscription</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="InscrivezVous.html" data-i18n="nav-register">Inscription</a></li>
                 </ul>
             </div>
         </div>
@@ -67,46 +67,49 @@
                     
                     <form action="inscription.php" method="POST">
                         <div class="row g-4">
-                            <!-- Nom complet -->
                             <div class="col-md-6">
                                 <label for="nom" class="form-label" data-i18n="reg-lastname">Nom de famille</label>
-                                <input type="text" class="form-control" id="nom" name="nom" placeholder="Votre nom" data-i18n="reg-placeholder-name" required>
+                                <input type="text" class="form-control" id="nom" name="nom" required>
                             </div>
                             <div class="col-md-6">
                                 <label for="prenom" class="form-label" data-i18n="reg-firstname">Prénom</label>
-                                <input type="text" class="form-control" id="prenom" name="prenom" placeholder="Votre prénom" data-i18n="reg-placeholder-firstname" required>
+                                <input type="text" class="form-control" id="prenom" name="prenom" required>
                             </div>
-
-                            <!-- Email et téléphone -->
                             <div class="col-md-6">
                                 <label for="email" class="form-label" data-i18n="reg-email">Email</label>
-                                <input type="email" class="form-control" id="email" name="email" placeholder="votre@email.com" data-i18n="reg-placeholder-email" required>
+                                <input type="email" class="form-control" id="email" name="email" required>
                             </div>
                             <div class="col-md-6">
                                 <label for="telephone" class="form-label" data-i18n="reg-phone">Téléphone</label>
-                                <input type="tel" class="form-control" id="telephone" name="telephone" placeholder="+41 00 000 00 00" data-i18n="reg-placeholder-phone" required>
+                                <input type="tel" class="form-control" id="telephone" name="telephone" required>
                             </div>
-
-                            <!-- Adresse -->
                             <div class="col-12">
                                 <label for="adresse" class="form-label" data-i18n="reg-address">Adresse complète</label>
-                                <input type="text" class="form-control" id="adresse" name="adresse" placeholder="Rue, numéro, code postal et ville" data-i18n="reg-placeholder-address" required>
+                                <input type="text" class="form-control" id="adresse" name="adresse" required>
                             </div>
-
-                            <!-- Nombre de personnes -->
                             <div class="col-md-6">
                                 <label for="nb_famille" class="form-label" data-i18n="reg-family-count">Nombre de personnes dans la famille</label>
                                 <input type="number" class="form-control" id="nb_famille" name="nb_famille" min="1" value="1" required>
                             </div>
                             <div class="col-md-6">
-                                <label for="date_naissance" class="form-label" data-i18n="reg-birthdate">Date de naissance (référent)</label>
+                                <label for="date_naissance" class="form-label" data-i18n="reg-birthdate">Date de naissance</label>
                                 <input type="date" class="form-control" id="date_naissance" name="date_naissance" required>
+                            </div>
+
+                            <!-- Case de confidentialité -->
+                            <div class="col-12 mt-4">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="privacyCheck" required>
+                                    <label class="form-check-label small text-muted" for="privacyCheck">
+                                        <span data-i18n="reg-privacy">En vous inscrivant, vous acceptez notre</span> 
+                                        <a href="politique-confidentialite.html" class="text-gold" data-i18n="reg-privacy-link">politique de confidentialité</a>.
+                                    </label>
+                                </div>
                             </div>
 
                             <!-- Bouton d'inscription -->
                             <div class="col-12 text-center mt-5">
                                 <button type="submit" class="btn btn-gold-action btn-lg px-5" data-i18n="reg-confirm">Confirmer l'inscription</button>
-                                <p class="mt-3 small text-muted" data-i18n="reg-privacy">En vous inscrivant, vous acceptez notre <a href="politique-confidentialite.html" class="text-gold" data-i18n="reg-privacy-link">politique de confidentialité</a>.</p>
                             </div>
                         </div>
                     </form>
@@ -119,7 +122,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-12 mb-4">
-                    <h3 class="text-white mb-3" data-i18n="footer-title">Antiochian Orthodox Geneva Switzerland</h3>
+                    <h3 class="text-white mb-3">Antiochian Orthodox Geneva Switzerland</h3>
                     <div class="social-icons">
                         <a href="https://m.facebook.com/share/p/16q4RCaz4V/?mibextid=wwXIfr&wtsid=rdr_0NXitAsiyx5FxvxpR" target="_blank"><i class="fab fa-facebook"></i></a>
                         <a href="https://www.instagram.com/antioch_geneve?igsh=ZjM0MW9qY2VpeDNh" target="_blank"><i class="fab fa-instagram"></i></a>
@@ -128,10 +131,10 @@
                 </div>
                 <div class="col-12 mb-4">
                     <p class="mb-1">
-                        <a href="mentions-legales.html" data-i18n="footer-legal">Mentions légales</a> | 
-                        <a href="politique-confidentialite.html" data-i18n="footer-privacy">Politique de confidentialité</a>
+                        <a href="mentions-legales.html">Mentions légales</a> | 
+                        <a href="politique-confidentialite.html">Politique de confidentialité</a>
                     </p>
-                    <p class="small text-white-50" data-i18n="footer-copyright">&copy; 2025 Tous droits réservés</p>
+                    <p class="small text-white-50">&copy; 2025 Tous droits réservés</p>
                 </div>
             </div>
         </div>
@@ -162,10 +165,5 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="script.js"></script>
-    <script>
-      if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('sw.js');
-      }
-    </script>
 </body>
 </html>
