@@ -132,9 +132,6 @@ footer { background: var(--primary-color) !important; padding: 4rem 0; border-to
 .social-icons a { font-size: 1.5rem; margin: 0 12px; color: var(--gold-color) !important; }
 .app-bottom-nav { display: none; }
 
-/* ===== ANTI-FLASH : appliqué avant le rendu ===== */
-html:not([data-theme]) { visibility: hidden; }
-
 /* ===== BOUTON INSTALL CACHÉ PAR DÉFAUT ===== */
 #btnInstall { display: none; }
 

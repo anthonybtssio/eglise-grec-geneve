@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <script>document.documentElement.setAttribute('data-theme',localStorage.getItem('theme')||'light');</script>
+    <script>try{document.documentElement.setAttribute('data-theme',localStorage.getItem('theme')||'light');}catch(e){document.documentElement.setAttribute('data-theme','light');}</script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title data-i18n="events-seo-title">Événements Église Orthodoxe Genève | Vie de la Paroisse</title>
     <meta name="description" content="Restez informé des prochains événements, fêtes et rassemblements de la communauté orthodoxe à Genève et Bellevue.">
